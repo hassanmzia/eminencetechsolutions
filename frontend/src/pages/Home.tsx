@@ -1,0 +1,480 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import {
+  Brain, Sparkles, Network, TrendingUp, GitBranch, Cloud,
+  Shield, Scale, Database, GraduationCap, ArrowRight, Star,
+  CheckCircle, Zap, Users, Building2, Award, ChevronRight,
+  Globe, Cpu, Lock, BarChart3
+} from 'lucide-react';
+
+const iconMap: Record<string, React.ReactNode> = {
+  Brain: <Brain size={28} />,
+  Sparkles: <Sparkles size={28} />,
+  Network: <Network size={28} />,
+  TrendingUp: <TrendingUp size={28} />,
+  GitBranch: <GitBranch size={28} />,
+  Cloud: <Cloud size={28} />,
+  Shield: <Shield size={28} />,
+  Scale: <Scale size={28} />,
+  Database: <Database size={28} />,
+  GraduationCap: <GraduationCap size={28} />,
+};
+
+const metricIcons: Record<string, React.ReactNode> = {
+  Building2: <Building2 size={24} />,
+  Brain: <Brain size={24} />,
+  Cloud: <Cloud size={24} />,
+  Shield: <Shield size={24} />,
+  Users: <Users size={24} />,
+  Award: <Award size={24} />,
+};
+
+const services = [
+  { title: 'Agentic AI Systems', slug: 'agentic-ai-systems', icon: 'Brain', desc: 'Autonomous AI agents that reason, plan, and execute complex enterprise tasks with human oversight.', techs: ['LangChain', 'MCP', 'A2A'] },
+  { title: 'Generative AI Solutions', slug: 'generative-ai-solutions', icon: 'Sparkles', desc: 'Custom LLM applications, RAG pipelines, and enterprise generative AI tailored to your data.', techs: ['GPT-4', 'Claude', 'RAG'] },
+  { title: 'Multi-Agent Systems', slug: 'multi-agent-ai-systems', icon: 'Network', desc: 'Collaborative multi-agent architectures using MCP and A2A protocols for complex workflows.', techs: ['MCP', 'A2A', 'AutoGen'] },
+  { title: 'AI Transformation', slug: 'ai-transformation-strategy', icon: 'TrendingUp', desc: 'End-to-end strategy with roadmaps, blueprints, and organizational change management.', techs: ['Strategy', 'Roadmap', 'ROI'] },
+  { title: 'DevSecOps & MLOps', slug: 'devsecops-mlops', icon: 'GitBranch', desc: 'Secure CI/CD pipelines, ML lifecycle management, and automated deployment workflows.', techs: ['ArgoCD', 'MLflow', 'Terraform'] },
+  { title: 'Cloud & Kubernetes', slug: 'cloud-kubernetes', icon: 'Cloud', desc: 'Multi-cloud architecture, Kubernetes/OpenShift orchestration across AWS, Azure, GCP.', techs: ['K8s', 'OpenShift', 'Docker'] },
+  { title: 'Cybersecurity & ATO', slug: 'cybersecurity-compliance', icon: 'Shield', desc: 'Comprehensive security services including ATO support and compliance frameworks.', techs: ['FedRAMP', 'NIST', 'SOC 2'] },
+  { title: 'AI Governance', slug: 'ai-governance-ethics', icon: 'Scale', desc: 'Ethical AI frameworks, regulatory compliance, guardrails, and governance structures.', techs: ['EU AI Act', 'NIST RMF', 'Ethics'] },
+];
+
+const metrics = [
+  { label: 'Enterprise Clients', value: '150+', icon: 'Building2' },
+  { label: 'AI Models Deployed', value: '500+', icon: 'Brain' },
+  { label: 'Cloud Migrations', value: '200+', icon: 'Cloud' },
+  { label: 'Security Certifications', value: '50+', icon: 'Shield' },
+];
+
+const testimonials = [
+  {
+    name: 'James Mitchell', title: 'CTO', company: 'Federal Financial Services Corp',
+    content: 'Eminence Tech Solutions transformed our approach to AI adoption. Their team delivered a comprehensive AI strategy roadmap and implemented agentic AI systems that automated 60% of our document processing workflows.',
+  },
+  {
+    name: 'Dr. Rachel Liu', title: 'VP of Innovation', company: 'National Healthcare Systems',
+    content: 'The multi-agent AI system Eminence built for our clinical research operations is remarkable. Their understanding of healthcare compliance and AI governance set them apart.',
+  },
+  {
+    name: 'Robert Okafor', title: 'Director of Engineering', company: 'Defense Analytics Group',
+    content: 'Working with Eminence on our Kubernetes migration and DevSecOps transformation was a game-changer. They deploy models 10x faster than our previous process.',
+  },
+];
+
+const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(30px)',
+        transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Home: React.FC = () => {
+  return (
+    <div>
+      {/* Hero Section */}
+      <section style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'var(--gradient-hero)',
+      }}>
+        {/* Background effects */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse at 70% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 60%)',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 60%)',
+        }} />
+
+        {/* Grid pattern overlay */}
+        <div style={{
+          position: 'absolute', inset: 0, opacity: 0.03,
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+        }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '6rem', paddingBottom: '4rem' }}>
+          <div style={{ maxWidth: '800px' }}>
+            <AnimatedSection>
+              <div className="section-label" style={{ marginBottom: '1.5rem' }}>
+                <Zap size={14} /> AI-First Consulting
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={100}>
+              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.75rem, 5.5vw, 4.5rem)', fontWeight: 900, lineHeight: 1.05 }}>
+                Pioneering{' '}
+                <span className="gradient-text">AI Innovation</span>
+                {' '}for Enterprise Transformation
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection delay={200}>
+              <p style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', maxWidth: '640px', lineHeight: 1.7 }}>
+                Expert consulting in Agentic AI, Multi-Agent Systems, Generative AI,
+                DevSecOps, Cloud Architecture, and Cybersecurity. We architect, build, and
+                deploy intelligent systems that transform how enterprises operate.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={300}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <Link to="/consulting" className="btn btn-primary btn-lg">
+                  Start Your AI Journey <ArrowRight size={18} />
+                </Link>
+                <Link to="/services" className="btn btn-secondary btn-lg">
+                  Explore Services
+                </Link>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={400}>
+              <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+                {[
+                  { icon: <Cpu size={16} />, label: 'MCP & A2A Protocols' },
+                  { icon: <Globe size={16} />, label: 'Multi-Cloud Expert' },
+                  { icon: <Lock size={16} />, label: 'ATO & FedRAMP' },
+                  { icon: <BarChart3 size={16} />, label: 'AI Governance' },
+                ].map((item) => (
+                  <div key={item.label} style={{
+                    display: 'flex', alignItems: 'center', gap: '0.5rem',
+                    color: 'var(--color-text-muted)', fontSize: '0.875rem',
+                  }}>
+                    <span style={{ color: 'var(--color-primary-400)' }}>{item.icon}</span>
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Metrics Strip */}
+      <section style={{
+        background: 'var(--color-dark-900)',
+        borderTop: '1px solid rgba(148, 163, 184, 0.08)',
+        borderBottom: '1px solid rgba(148, 163, 184, 0.08)',
+        padding: '3rem 0',
+      }}>
+        <div className="container">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '2rem',
+            textAlign: 'center',
+          }}>
+            {metrics.map((metric, idx) => (
+              <AnimatedSection key={metric.label} delay={idx * 100}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{ color: 'var(--color-primary-400)' }}>
+                    {metricIcons[metric.icon]}
+                  </div>
+                  <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'white' }}>{metric.value}</div>
+                  <div style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{metric.label}</div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="section" style={{ background: 'var(--color-dark-950)' }}>
+        <div className="container">
+          <AnimatedSection>
+            <div className="section-header">
+              <span className="section-label"><Brain size={14} /> What We Do</span>
+              <h2 className="section-title">
+                Comprehensive <span className="gradient-text">AI & Cloud</span> Services
+              </h2>
+              <p className="section-subtitle">
+                From strategy to deployment, we deliver end-to-end AI solutions that drive measurable business outcomes.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.25rem',
+          }}>
+            {services.map((service, idx) => (
+              <AnimatedSection key={service.slug} delay={idx * 75}>
+                <Link to={`/services/${service.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
+                    <div style={{
+                      width: '48px', height: '48px', borderRadius: '12px',
+                      background: 'rgba(59, 130, 246, 0.1)',
+                      border: '1px solid rgba(59, 130, 246, 0.2)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: 'var(--color-primary-400)', marginBottom: '1.25rem',
+                    }}>
+                      {iconMap[service.icon]}
+                    </div>
+                    <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>
+                      {service.title}
+                    </h3>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                      {service.desc}
+                    </p>
+                    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
+                      {service.techs.map((tech) => (
+                        <span key={tech} className="badge" style={{ fontSize: '0.6875rem' }}>{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection>
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <Link to="/services" className="btn btn-secondary">
+                View All Services <ArrowRight size={16} />
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="section" style={{ background: 'var(--color-dark-900)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            <AnimatedSection>
+              <div>
+                <span className="section-label"><Star size={14} /> Why Eminence</span>
+                <h2 style={{ marginBottom: '1.5rem' }}>
+                  The AI Partner Your <span className="gradient-text">Enterprise Deserves</span>
+                </h2>
+                <p style={{ fontSize: '1.0625rem', color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
+                  We combine deep AI expertise with enterprise-grade engineering to deliver
+                  solutions that are not just innovative, but production-ready, secure, and compliant.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {[
+                    { title: 'AI-First Architecture', desc: 'Every solution is designed with AI at the core, using cutting-edge protocols like MCP and A2A for agent interoperability.' },
+                    { title: 'Security & Compliance Built-In', desc: 'Federal-grade security with ATO, FedRAMP, and NIST compliance integrated from day one.' },
+                    { title: 'Full Lifecycle Support', desc: 'From strategic roadmapping through deployment and ongoing optimization - we are with you every step.' },
+                    { title: 'Multi-Cloud Expertise', desc: 'Deploy anywhere with our Kubernetes, OpenShift, and multi-cloud orchestration capabilities across AWS, Azure, and GCP.' },
+                    { title: 'Proven Track Record', desc: '150+ enterprise clients, 500+ AI models deployed, and deep experience across government, healthcare, financial services, and defense.' },
+                  ].map((item) => (
+                    <div key={item.title} style={{ display: 'flex', gap: '0.875rem' }}>
+                      <CheckCircle size={20} style={{ color: 'var(--color-success-500)', flexShrink: 0, marginTop: '0.125rem' }} />
+                      <div>
+                        <div style={{ fontWeight: 600, color: 'white', marginBottom: '0.25rem' }}>{item.title}</div>
+                        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={200}>
+              <div style={{
+                background: 'var(--gradient-card)',
+                border: 'var(--border-subtle)',
+                borderRadius: 'var(--radius-2xl)',
+                padding: '2.5rem',
+                position: 'relative',
+              }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', color: 'white' }}>
+                  Our Technology Expertise
+                </h3>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                  {[
+                    { cat: 'AI/ML', items: ['LangChain', 'AutoGen', 'CrewAI', 'PyTorch', 'Hugging Face'] },
+                    { cat: 'Protocols', items: ['MCP', 'A2A', 'OpenAI API', 'Claude API'] },
+                    { cat: 'Cloud', items: ['AWS', 'Azure', 'GCP', 'Multi-Cloud'] },
+                    { cat: 'DevOps', items: ['Kubernetes', 'OpenShift', 'Docker', 'Terraform'] },
+                    { cat: 'Security', items: ['NIST RMF', 'FedRAMP', 'SOC 2', 'SIEM'] },
+                    { cat: 'Data', items: ['PostgreSQL', 'Redis', 'Kafka', 'Vector DBs'] },
+                  ].map((group) => (
+                    <div key={group.cat}>
+                      <div style={{
+                        fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary-400)',
+                        textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem',
+                      }}>
+                        {group.cat}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                        {group.items.map((item) => (
+                          <span key={item} style={{ fontSize: '0.8125rem', color: 'var(--color-text-secondary)' }}>{item}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section" style={{ background: 'var(--color-dark-950)' }}>
+        <div className="container">
+          <AnimatedSection>
+            <div className="section-header">
+              <span className="section-label"><Star size={14} /> Client Success</span>
+              <h2 className="section-title">
+                Trusted by <span className="gradient-text">Industry Leaders</span>
+              </h2>
+              <p className="section-subtitle">
+                Hear from organizations that have transformed their operations with our AI solutions.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-3">
+            {testimonials.map((t, idx) => (
+              <AnimatedSection key={t.name} delay={idx * 100}>
+                <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem' }}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} size={16} fill="var(--color-primary-400)" color="var(--color-primary-400)" />
+                    ))}
+                  </div>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.7, flex: 1, marginBottom: '1.5rem' }}>
+                    "{t.content}"
+                  </p>
+                  <div style={{ borderTop: '1px solid rgba(148, 163, 184, 0.08)', paddingTop: '1rem' }}>
+                    <div style={{ fontWeight: 600, color: 'white', fontSize: '0.9375rem' }}>{t.name}</div>
+                    <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
+                      {t.title}, {t.company}
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Capabilities Highlight */}
+      <section className="section" style={{
+        background: 'linear-gradient(135deg, var(--color-primary-950), var(--color-dark-900))',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%)',
+        }} />
+        <div className="container" style={{ position: 'relative' }}>
+          <AnimatedSection>
+            <div className="section-header">
+              <span className="section-label"><Network size={14} /> AI Architecture</span>
+              <h2 className="section-title">
+                Built on <span className="gradient-text">Next-Generation AI Protocols</span>
+              </h2>
+              <p className="section-subtitle">
+                Our solutions leverage the latest in AI agent interoperability standards.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-3">
+            {[
+              {
+                title: 'Model Context Protocol (MCP)',
+                desc: 'Standardized protocol for connecting AI models to tools, data sources, and APIs. We implement MCP servers and clients for seamless AI system integration.',
+                features: ['Tool integration', 'Data source connectivity', 'Standardized interfaces', 'Cross-platform compatibility'],
+              },
+              {
+                title: 'Agent-to-Agent (A2A)',
+                desc: 'Inter-agent communication protocol enabling AI agents to discover, negotiate, and collaborate. We build A2A-compliant agent networks for complex workflows.',
+                features: ['Agent discovery', 'Task delegation', 'Collaborative solving', 'Agent cards & skills'],
+              },
+              {
+                title: 'RAG Architecture',
+                desc: 'Enterprise Retrieval-Augmented Generation systems that ground AI responses in your organizational knowledge with high accuracy and security.',
+                features: ['Semantic search', 'Hybrid retrieval', 'Document processing', 'Access controls'],
+              },
+            ].map((item, idx) => (
+              <AnimatedSection key={item.title} delay={idx * 100}>
+                <div className="card" style={{ height: '100%' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.25rem', lineHeight: 1.6 }}>
+                    {item.desc}
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {item.features.map((f) => (
+                      <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+                        <CheckCircle size={14} style={{ color: 'var(--color-success-500)' }} /> {f}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section" style={{
+        background: 'var(--color-dark-950)',
+      }}>
+        <div className="container">
+          <AnimatedSection>
+            <div style={{
+              textAlign: 'center',
+              maxWidth: '700px',
+              margin: '0 auto',
+              padding: '4rem 2rem',
+              background: 'var(--gradient-card)',
+              borderRadius: 'var(--radius-2xl)',
+              border: '1px solid rgba(59, 130, 246, 0.15)',
+              position: 'relative',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+              }} />
+              <div style={{ position: 'relative' }}>
+                <h2 style={{ marginBottom: '1rem' }}>
+                  Ready to Transform Your Business with <span className="gradient-text">AI</span>?
+                </h2>
+                <p style={{ fontSize: '1.0625rem', color: 'var(--color-text-muted)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+                  Let our experts help you navigate the AI landscape. From strategy to deployment, we're your trusted partner.
+                </p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Link to="/consulting" className="btn btn-primary btn-lg">
+                    Schedule a Consultation <ArrowRight size={18} />
+                  </Link>
+                  <Link to="/contact" className="btn btn-secondary btn-lg">
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
