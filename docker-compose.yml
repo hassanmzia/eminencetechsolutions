@@ -132,7 +132,7 @@ services:
     container_name: eminence-frontend
     restart: unless-stopped
     ports:
-      - "3001:3000"  # Using 3001 externally to avoid conflicts
+      - "3002:3000"  # Using 3002 externally to avoid conflicts
     networks:
       - eminence-network
 
