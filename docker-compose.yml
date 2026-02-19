@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
     ports:
-      - "6380:6379"  # Using 6380 externally to avoid conflicts
+      - "26380:6379"  # Using 26380 externally to avoid conflicts
     volumes:
       - redis_data:/data
     healthcheck:
