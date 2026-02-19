@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Brain, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import Logo from './Logo';
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -66,32 +67,8 @@ const Navbar: React.FC = () => {
         height: '72px',
       }}>
         {/* Logo */}
-        <Link to="/" style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          textDecoration: 'none',
-          color: 'white',
-        }}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            background: 'var(--gradient-accent)',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-            <Brain size={24} color="white" />
-          </div>
-          <div>
-            <div style={{ fontSize: '1.125rem', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-              EMINENCE
-            </div>
-            <div style={{ fontSize: '0.625rem', fontWeight: 500, color: 'var(--color-primary-400)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-              Tech Solutions
-            </div>
-          </div>
+        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+          <Logo size={40} showText={true} textSize="md" />
         </Link>
 
         {/* Desktop Nav */}

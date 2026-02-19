@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Mail, MapPin, Phone, Linkedin, Github, ArrowRight, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Mail, MapPin, Phone, Linkedin, Github, ArrowRight, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -27,29 +28,8 @@ const Footer: React.FC = () => {
         }}>
           {/* Company Info */}
           <div style={{ gridColumn: 'span 1' }}>
-            <Link to="/" style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              textDecoration: 'none',
-              color: 'white',
-              marginBottom: '1.25rem',
-            }}>
-              <div style={{
-                width: '36px',
-                height: '36px',
-                background: 'var(--gradient-accent)',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <Brain size={20} color="white" />
-              </div>
-              <div>
-                <div style={{ fontSize: '1rem', fontWeight: 800 }}>EMINENCE</div>
-                <div style={{ fontSize: '0.5625rem', color: 'var(--color-primary-400)', letterSpacing: '0.15em' }}>TECH SOLUTIONS</div>
-              </div>
+            <Link to="/" style={{ textDecoration: 'none', color: 'white', marginBottom: '1.25rem', display: 'block' }}>
+              <Logo size={36} showText={true} textSize="sm" />
             </Link>
             <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Pioneering AI Innovation for Enterprise Transformation. Expert consulting in Agentic AI, Multi-Agent Systems, Cloud Architecture, and Cybersecurity.
