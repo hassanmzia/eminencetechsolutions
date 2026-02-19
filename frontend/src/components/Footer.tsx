@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Mail, MapPin, Phone, Linkedin, Github, ArrowRight } from 'lucide-react';
+import { Brain, Mail, MapPin, Phone, Linkedin, Github, ArrowRight, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -141,23 +141,24 @@ const Footer: React.FC = () => {
                 </button>
               </form>
             )}
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{
-                width: '36px', height: '36px', borderRadius: '8px',
-                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--color-text-muted)', transition: 'all 150ms',
-              }}>
-                <Linkedin size={16} />
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{
-                width: '36px', height: '36px', borderRadius: '8px',
-                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--color-text-muted)', transition: 'all 150ms',
-              }}>
-                <Github size={16} />
-              </a>
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+              {[
+                { href: 'https://www.linkedin.com/company/eminencetechsolutions', icon: <Linkedin size={16} />, label: 'LinkedIn' },
+                { href: 'https://github.com/eminencetechsolutions', icon: <Github size={16} />, label: 'GitHub' },
+                { href: 'https://x.com/eminencetech', icon: <Twitter size={16} />, label: 'X (Twitter)' },
+                { href: 'https://www.facebook.com/eminencetechsolutions', icon: <Facebook size={16} />, label: 'Facebook' },
+                { href: 'https://www.instagram.com/eminencetechsolutions', icon: <Instagram size={16} />, label: 'Instagram' },
+                { href: 'https://www.youtube.com/@eminencetechsolutions', icon: <Youtube size={16} />, label: 'YouTube' },
+              ].map((social) => (
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} style={{
+                  width: '36px', height: '36px', borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'var(--color-text-muted)', transition: 'all 150ms',
+                }}>
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
