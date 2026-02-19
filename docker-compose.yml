@@ -15,7 +15,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"  # Using 5433 externally to avoid conflicts
+      - "25433:5432"  # Using 25433 externally to avoid conflicts
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-eminence_user} -d ${POSTGRES_DB:-eminence_db}"]
       interval: 10s
@@ -146,7 +146,7 @@ services:
     container_name: eminence-nginx
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "3021:80"  # Using 3021 externally since port 80 is occupied
     depends_on:
       - backend
       - frontend
