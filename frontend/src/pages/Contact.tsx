@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Mail, MapPin, Phone, Clock, Send, CheckCircle, MessageSquare,
-  Handshake, Newspaper, HelpCircle, ArrowRight,
+  Users, Newspaper, HelpCircle, ArrowRight,
 } from 'lucide-react';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
@@ -16,7 +16,7 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
 
 const inquiryTypes = [
   { value: 'general', label: 'General Inquiry', icon: <HelpCircle size={16} /> },
-  { value: 'partnership', label: 'Partnership Opportunity', icon: <Handshake size={16} /> },
+  { value: 'partnership', label: 'Partnership Opportunity', icon: <Users size={16} /> },
   { value: 'press', label: 'Press & Media', icon: <Newspaper size={16} /> },
   { value: 'support', label: 'Technical Support', icon: <MessageSquare size={16} /> },
 ];
