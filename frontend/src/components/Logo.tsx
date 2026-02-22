@@ -14,75 +14,65 @@ const Logo: React.FC<LogoProps> = ({ size = 40, showText = true, textSize = 'md'
   };
 
   const ts = textSizes[textSize];
+  const scale = size / 40;
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: ts.gap }}>
-      {/* Logo Mark */}
       <svg
-        width={size}
+        width={size * 3.2}
         height={size}
-        viewBox="0 0 120 120"
+        viewBox="0 0 320 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-label="Eminence Tech Solutions Logo"
       >
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#1e3a8a" />
-          </linearGradient>
-        </defs>
+        {/* ETS Text */}
+        <text
+          x="4"
+          y="72"
+          style={{
+            fontSize: '72px',
+            fontWeight: 700,
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            letterSpacing: '0.05em',
+          }}
+          fill="#c0392b"
+        >
+          ETS
+        </text>
 
-        {/* Background rounded square */}
-        <rect x="4" y="4" width="112" height="112" rx="24" fill="#1e3a8a" />
+        {/* Dot matrix pattern */}
+        {/* Row 1 - smallest dots */}
+        <circle cx="190" cy="20" r="3" fill="#2c3e50" opacity="0.4" />
+        <circle cx="210" cy="20" r="3.5" fill="#2c3e50" opacity="0.45" />
+        <circle cx="230" cy="20" r="3.5" fill="#2c3e50" opacity="0.45" />
+        <circle cx="250" cy="20" r="4" fill="#2c3e50" opacity="0.5" />
+        <circle cx="270" cy="20" r="4" fill="#2c3e50" opacity="0.5" />
+        <circle cx="290" cy="20" r="4.5" fill="#2c3e50" opacity="0.55" />
 
-        {/* Neural network / Brain circuit pattern */}
-        {/* Central brain node */}
-        <circle cx="60" cy="52" r="14" fill="none" stroke="white" strokeWidth="2.5" />
-        <circle cx="60" cy="52" r="7" fill="white" opacity="0.9" />
+        {/* Row 2 */}
+        <circle cx="190" cy="38" r="3.5" fill="#2c3e50" opacity="0.45" />
+        <circle cx="210" cy="38" r="4" fill="#2c3e50" opacity="0.5" />
+        <circle cx="230" cy="38" r="4.5" fill="#2c3e50" opacity="0.55" />
+        <circle cx="250" cy="38" r="5" fill="#2c3e50" opacity="0.6" />
+        <circle cx="270" cy="38" r="5" fill="#2c3e50" opacity="0.6" />
+        <circle cx="290" cy="38" r="5.5" fill="#2c3e50" opacity="0.65" />
 
-        {/* Top node */}
-        <circle cx="60" cy="24" r="5" fill="white" opacity="0.8" />
-        <line x1="60" y1="29" x2="60" y2="38" stroke="white" strokeWidth="1.5" opacity="0.7" />
+        {/* Row 3 */}
+        <circle cx="190" cy="56" r="4" fill="#2c3e50" opacity="0.5" />
+        <circle cx="210" cy="56" r="4.5" fill="#2c3e50" opacity="0.55" />
+        <circle cx="230" cy="56" r="5" fill="#2c3e50" opacity="0.6" />
+        <circle cx="250" cy="56" r="5.5" fill="#2c3e50" opacity="0.65" />
+        <circle cx="270" cy="56" r="6" fill="#2c3e50" opacity="0.7" />
+        <circle cx="290" cy="56" r="6.5" fill="#2c3e50" opacity="0.75" />
 
-        {/* Top-left node */}
-        <circle cx="32" cy="34" r="4.5" fill="white" opacity="0.7" />
-        <line x1="36" y1="36.5" x2="48" y2="45" stroke="white" strokeWidth="1.5" opacity="0.6" />
-
-        {/* Top-right node */}
-        <circle cx="88" cy="34" r="4.5" fill="white" opacity="0.7" />
-        <line x1="84" y1="36.5" x2="72" y2="45" stroke="white" strokeWidth="1.5" opacity="0.6" />
-
-        {/* Left node */}
-        <circle cx="24" cy="58" r="4.5" fill="white" opacity="0.7" />
-        <line x1="28.5" y1="58" x2="46" y2="54" stroke="white" strokeWidth="1.5" opacity="0.6" />
-
-        {/* Right node */}
-        <circle cx="96" cy="58" r="4.5" fill="white" opacity="0.7" />
-        <line x1="91.5" y1="58" x2="74" y2="54" stroke="white" strokeWidth="1.5" opacity="0.6" />
-
-        {/* Bottom-left node */}
-        <circle cx="36" cy="78" r="4" fill="white" opacity="0.65" />
-        <line x1="39" y1="75.5" x2="51" y2="63" stroke="white" strokeWidth="1.5" opacity="0.5" />
-
-        {/* Bottom-right node */}
-        <circle cx="84" cy="78" r="4" fill="white" opacity="0.65" />
-        <line x1="81" y1="75.5" x2="69" y2="63" stroke="white" strokeWidth="1.5" opacity="0.5" />
-
-        {/* Cross connections for neural network effect */}
-        <line x1="35" y1="37" x2="56" y2="25" stroke="white" strokeWidth="1" opacity="0.3" />
-        <line x1="85" y1="37" x2="64" y2="25" stroke="white" strokeWidth="1" opacity="0.3" />
-        <line x1="27" y1="55" x2="34" y2="38" stroke="white" strokeWidth="1" opacity="0.25" />
-        <line x1="93" y1="55" x2="86" y2="38" stroke="white" strokeWidth="1" opacity="0.25" />
-        <line x1="38" y1="75" x2="26" y2="62" stroke="white" strokeWidth="1" opacity="0.25" />
-        <line x1="82" y1="75" x2="94" y2="62" stroke="white" strokeWidth="1" opacity="0.25" />
-
-        {/* Stylized "E" lettermark at bottom */}
-        <path
-          d="M42 90 L42 102 L78 102 L78 99 L46 99 L46 97.5 L74 97.5 L74 94.5 L46 94.5 L46 93 L78 93 L78 90 Z"
-          fill="white"
-          opacity="0.9"
-        />
+        {/* Row 4 - largest dots */}
+        <circle cx="190" cy="76" r="4.5" fill="#2c3e50" opacity="0.55" />
+        <circle cx="210" cy="76" r="5" fill="#2c3e50" opacity="0.6" />
+        <circle cx="230" cy="76" r="5.5" fill="#2c3e50" opacity="0.65" />
+        <circle cx="250" cy="76" r="6" fill="#2c3e50" opacity="0.7" />
+        <circle cx="270" cy="76" r="7" fill="#2c3e50" opacity="0.8" />
+        <circle cx="290" cy="76" r="7.5" fill="#2c3e50" opacity="0.9" />
       </svg>
 
       {/* Text */}
@@ -100,7 +90,7 @@ const Logo: React.FC<LogoProps> = ({ size = 40, showText = true, textSize = 'md'
           <div style={{
             fontSize: ts.sub,
             fontWeight: 600,
-            color: 'var(--color-primary-600)',
+            color: '#c0392b',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
           }}>
