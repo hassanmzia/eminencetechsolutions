@@ -51,7 +51,7 @@ LangChain | AutoGen | CrewAI | PyTorch | Hugging Face | MCP | A2A | AWS | Azure 
 
 Founded by Hassan M. Zia, Eminence Tech Solutions combines deep technical expertise with strategic vision to transform how enterprises leverage AI.
 
-Contact us: info@eminencetechsolutions.com | (703) 555-1234
+Contact us: info@eminencetechsolutions.com | (703) 665-3988
 Visit: www.eminencetechsolutions.com
 ```
 
@@ -97,7 +97,7 @@ Whether you're starting your AI journey or scaling existing capabilities, we pro
 
 Get in touch:
 Email: info@eminencetechsolutions.com
-Phone: (703) 555-1234
+Phone: (703) 665-3988
 Address: 44330 Mercure Circle, Sterling, VA 20166
 Website: www.eminencetechsolutions.com
 ```
@@ -277,7 +277,7 @@ Premier AI consulting firm - Agentic AI, Multi-Agent Systems, Generative AI, Dev
 3. Enter "Eminence Tech Solutions"
 4. Category: "Information technology consulting"
 5. Add address: 44330 Mercure Circle, Sterling, VA 20166
-6. Phone: (703) 555-1234
+6. Phone: (703) 665-3988
 7. Website: https://www.eminencetechsolutions.com
 8. Complete verification (usually by mail or phone)
 9. Add photos, hours, services, and business description

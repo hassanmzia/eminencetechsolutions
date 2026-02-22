@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import {
   Brain, Sparkles, Network, TrendingUp, GitBranch, Cloud,
   Shield, Scale, Database, GraduationCap, ArrowRight, Star,
-  CheckCircle, Zap, Users, Building2, Award, ChevronRight,
+  CheckCircle, Zap, Users, Building2, Award,
   Globe, Cpu, Lock, BarChart3
 } from 'lucide-react';
 
@@ -48,20 +48,6 @@ const metrics = [
   { label: 'Security Certifications', value: '50+', icon: 'Shield' },
 ];
 
-const testimonials = [
-  {
-    name: 'James Mitchell', title: 'CTO', company: 'Federal Financial Services Corp',
-    content: 'Eminence Tech Solutions transformed our approach to AI adoption. Their team delivered a comprehensive AI strategy roadmap and implemented agentic AI systems that automated 60% of our document processing workflows.',
-  },
-  {
-    name: 'Dr. Rachel Liu', title: 'VP of Innovation', company: 'National Healthcare Systems',
-    content: 'The multi-agent AI system Eminence built for our clinical research operations is remarkable. Their understanding of healthcare compliance and AI governance set them apart.',
-  },
-  {
-    name: 'Robert Okafor', title: 'Director of Engineering', company: 'Defense Analytics Group',
-    content: 'Working with Eminence on our Kubernetes migration and DevSecOps transformation was a game-changer. They deploy models 10x faster than our previous process.',
-  },
-];
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -100,6 +86,16 @@ const Home: React.FC = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={100}>
+              <div style={{
+                fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                fontWeight: 600,
+                letterSpacing: '0.2em',
+                color: 'var(--color-primary-600)',
+                marginBottom: '1rem',
+                textTransform: 'uppercase',
+              }}>
+                WE MAKE IT HAPPEN
+              </div>
               <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2 }}>
                 Pioneering{' '}
                 <span className="gradient-text">AI Innovation</span>
@@ -308,46 +304,6 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
-        <div className="container">
-          <AnimatedSection>
-            <div className="section-header">
-              <span className="section-label"><Star size={14} /> Client Success</span>
-              <h2 className="section-title">
-                Trusted by <span className="gradient-text">Industry Leaders</span>
-              </h2>
-              <p className="section-subtitle">
-                Hear from organizations that have transformed their operations with our AI solutions.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-3">
-            {testimonials.map((t, idx) => (
-              <AnimatedSection key={t.name} delay={idx * 100}>
-                <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem' }}>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={16} fill="var(--color-primary-500)" color="var(--color-primary-500)" />
-                    ))}
-                  </div>
-                  <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.7, flex: 1, marginBottom: '1.5rem' }}>
-                    "{t.content}"
-                  </p>
-                  <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem' }}>
-                    <div style={{ fontWeight: 600, color: 'var(--color-text-primary)', fontSize: '0.9375rem' }}>{t.name}</div>
-                    <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
-                      {t.title}, {t.company}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
           </div>
         </div>
       </section>

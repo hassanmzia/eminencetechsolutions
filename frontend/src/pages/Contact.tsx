@@ -125,7 +125,7 @@ const Contact: React.FC = () => {
 
                 {[
                   { icon: <Mail size={20} />, title: 'Email', detail: 'info@eminencetechsolutions.com', sub: 'We respond within 24 hours' },
-                  { icon: <Phone size={20} />, title: 'Phone', detail: '(703) 555-1234', sub: 'Mon-Fri, 9am-6pm EST' },
+                  { icon: <Phone size={20} />, title: 'Phone', detail: '(703) 665-3988', sub: 'Mon-Fri, 9am-6pm EST' },
                   { icon: <MapPin size={20} />, title: 'Office', detail: '44330 Mercure Circle', sub: 'Sterling, VA 20166' },
                   { icon: <Clock size={20} />, title: 'Business Hours', detail: 'Monday - Friday', sub: '9:00 AM - 6:00 PM EST' },
                 ].map((item) => (
