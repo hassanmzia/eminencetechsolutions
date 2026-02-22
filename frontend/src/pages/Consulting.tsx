@@ -8,7 +8,7 @@ import {
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${delay}ms` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -73,7 +73,7 @@ const Consulting: React.FC = () => {
   return (
     <div style={{ paddingTop: '6rem' }}>
       {/* Hero */}
-      <section className="section" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <AnimatedSection>
             <div style={{ maxWidth: '700px' }}>
@@ -90,7 +90,7 @@ const Consulting: React.FC = () => {
       </section>
 
       {/* Process */}
-      <section className="section" style={{ background: 'var(--color-dark-900)' }}>
+      <section className="section" style={{ background: 'white' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -106,10 +106,10 @@ const Consulting: React.FC = () => {
             ].map((step, i) => (
               <AnimatedSection key={step.title} delay={i * 100}>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-400)', margin: '0 auto 1rem' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', margin: '0 auto 1rem' }}>
                     {step.icon}
                   </div>
-                  <h4 style={{ color: 'white', marginBottom: '0.5rem' }}>{step.title}</h4>
+                  <h4 style={{ color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>{step.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{step.desc}</p>
                 </div>
               </AnimatedSection>
@@ -119,14 +119,14 @@ const Consulting: React.FC = () => {
       </section>
 
       {/* Form */}
-      <section className="section">
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <AnimatedSection>
               {submitted ? (
                 <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
                   <CheckCircle size={64} style={{ color: 'var(--color-success-500)', marginBottom: '1.5rem' }} />
-                  <h2 style={{ color: 'white', marginBottom: '0.75rem' }}>Inquiry Submitted Successfully!</h2>
+                  <h2 style={{ color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>Inquiry Submitted Successfully!</h2>
                   <p style={{ color: 'var(--color-text-muted)', marginBottom: '0.5rem', fontSize: '1.0625rem' }}>
                     Thank you for your interest in Eminence Tech Solutions.
                   </p>
@@ -140,12 +140,12 @@ const Consulting: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-                    <FileText size={24} style={{ color: 'var(--color-primary-400)' }} />
-                    <h2 style={{ color: 'white' }}>Consulting Inquiry Form</h2>
+                    <FileText size={24} style={{ color: 'var(--color-primary-600)' }} />
+                    <h2 style={{ color: 'var(--color-text-primary)' }}>Consulting Inquiry Form</h2>
                   </div>
 
                   {/* Contact Info */}
-                  <h3 style={{ color: 'white', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(148,163,184,0.1)' }}>Contact Information</h3>
+                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Contact Information</h3>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
                     <div className="form-group"><label className="form-label">Company Name *</label><input name="company_name" value={form.company_name} onChange={handleChange} className="form-input" required placeholder="Acme Corp" /></div>
                     <div className="form-group"><label className="form-label">Contact Name *</label><input name="contact_name" value={form.contact_name} onChange={handleChange} className="form-input" required placeholder="John Doe" /></div>
@@ -158,7 +158,7 @@ const Consulting: React.FC = () => {
                   </div>
 
                   {/* Project Info */}
-                  <h3 style={{ color: 'white', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(148,163,184,0.1)' }}>Project Details</h3>
+                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Project Details</h3>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
                     <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Service Type *</label>
                       <select name="service_type" value={form.service_type} onChange={handleChange} className="form-select">

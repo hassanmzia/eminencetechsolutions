@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer style={{
-      background: 'var(--color-dark-900)',
-      borderTop: '1px solid rgba(148, 163, 184, 0.08)',
+      background: 'var(--color-bg-secondary)',
+      borderTop: '1px solid #e2e8f0',
       paddingTop: '4rem',
     }}>
       <div className="container">
@@ -28,20 +28,20 @@ const Footer: React.FC = () => {
         }}>
           {/* Company Info */}
           <div style={{ gridColumn: 'span 1' }}>
-            <Link to="/" style={{ textDecoration: 'none', color: 'white', marginBottom: '1.25rem', display: 'block' }}>
-              <Logo size={36} showText={true} textSize="sm" />
+            <Link to="/" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', marginBottom: '1.25rem', display: 'block' }}>
+              <Logo size={28} showText={true} textSize="sm" />
             </Link>
-            <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Pioneering AI Innovation for Enterprise Transformation. Expert consulting in Agentic AI, Multi-Agent Systems, Cloud Architecture, and Cybersecurity.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <a href="mailto:info@eminencetechsolutions.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
+              <a href="mailto:info@eminencetechsolutions.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none' }}>
                 <Mail size={14} /> info@eminencetechsolutions.com
               </a>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem' }}>
                 <MapPin size={14} /> 44330 Mercure Circle, Sterling, VA
               </span>
-              <a href="tel:+17035551234" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
+              <a href="tel:+17035551234" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none' }}>
                 <Phone size={14} /> (703) 555-1234
               </a>
             </div>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'white', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Services</h4>
+            <h4 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Services</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[
                 { path: '/services/agentic-ai-systems', label: 'Agentic AI Systems' },
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 { path: '/services/cloud-kubernetes', label: 'Cloud & Kubernetes' },
                 { path: '/services/cybersecurity-compliance', label: 'Cybersecurity' },
               ].map((link) => (
-                <Link key={link.path} to={link.path} style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', textDecoration: 'none', transition: 'color 150ms' }}>
+                <Link key={link.path} to={link.path} style={{ color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none', transition: 'color 150ms' }}>
                   {link.label}
                 </Link>
               ))}
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
 
           {/* Company */}
           <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'white', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Company</h4>
+            <h4 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Company</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[
                 { path: '/about', label: 'About Us' },
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
                 { path: '/contact', label: 'Contact Us' },
                 { path: '/consulting', label: 'Start a Project' },
               ].map((link) => (
-                <Link key={link.path} to={link.path} style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <Link key={link.path} to={link.path} style={{ color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none' }}>
                   {link.label}
                 </Link>
               ))}
@@ -88,12 +88,12 @@ const Footer: React.FC = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'white', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Stay Updated</h4>
-            <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
+            <h4 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Stay Updated</h4>
+            <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
               Subscribe to our newsletter for the latest AI insights and industry updates.
             </p>
             {subscribed ? (
-              <p style={{ color: 'var(--color-success-500)', fontSize: '0.875rem' }}>
+              <p style={{ color: 'var(--color-success-500)', fontSize: '0.8125rem' }}>
                 Thank you for subscribing!
               </p>
             ) : (
@@ -107,11 +107,11 @@ const Footer: React.FC = () => {
                   style={{
                     flex: 1,
                     padding: '0.625rem 0.875rem',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: '1px solid rgba(148, 163, 184, 0.15)',
+                    background: 'white',
+                    border: '1px solid #d1d5db',
                     borderRadius: 'var(--radius-md)',
-                    color: 'white',
-                    fontSize: '0.875rem',
+                    color: 'var(--color-text-primary)',
+                    fontSize: '0.8125rem',
                     fontFamily: 'inherit',
                     outline: 'none',
                   }}
@@ -123,16 +123,16 @@ const Footer: React.FC = () => {
             )}
             <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
               {[
-                { href: 'https://www.linkedin.com/company/eminencetechsolutions', icon: <Linkedin size={16} />, label: 'LinkedIn' },
-                { href: 'https://github.com/eminencetechsolutions', icon: <Github size={16} />, label: 'GitHub' },
-                { href: 'https://x.com/eminencetech', icon: <Twitter size={16} />, label: 'X (Twitter)' },
-                { href: 'https://www.facebook.com/eminencetechsolutions', icon: <Facebook size={16} />, label: 'Facebook' },
-                { href: 'https://www.instagram.com/eminencetechsolutions', icon: <Instagram size={16} />, label: 'Instagram' },
-                { href: 'https://www.youtube.com/@eminencetechsolutions', icon: <Youtube size={16} />, label: 'YouTube' },
+                { href: 'https://www.linkedin.com/company/eminencetechsolutions', icon: <Linkedin size={14} />, label: 'LinkedIn' },
+                { href: 'https://github.com/eminencetechsolutions', icon: <Github size={14} />, label: 'GitHub' },
+                { href: 'https://x.com/eminencetech', icon: <Twitter size={14} />, label: 'X (Twitter)' },
+                { href: 'https://www.facebook.com/eminencetechsolutions', icon: <Facebook size={14} />, label: 'Facebook' },
+                { href: 'https://www.instagram.com/eminencetechsolutions', icon: <Instagram size={14} />, label: 'Instagram' },
+                { href: 'https://www.youtube.com/@eminencetechsolutions', icon: <Youtube size={14} />, label: 'YouTube' },
               ].map((social) => (
                 <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} style={{
-                  width: '36px', height: '36px', borderRadius: '8px',
-                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                  width: '30px', height: '30px', borderRadius: '8px',
+                  background: 'white', border: '1px solid #e2e8f0',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'var(--color-text-muted)', transition: 'all 150ms',
                 }}>
@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid rgba(148, 163, 184, 0.08)',
+          borderTop: '1px solid #e2e8f0',
           padding: '1.5rem 0',
           display: 'flex',
           justifyContent: 'space-between',

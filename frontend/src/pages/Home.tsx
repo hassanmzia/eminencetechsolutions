@@ -70,7 +70,7 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
       ref={ref}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(30px)',
+        transform: inView ? 'translateY(0)' : 'translateY(16px)',
         transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms`,
       }}
     >
@@ -89,25 +89,8 @@ const Home: React.FC = () => {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'var(--gradient-hero)',
+        background: 'var(--color-bg-secondary)',
       }}>
-        {/* Background effects */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 70% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 60%)',
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 60%)',
-        }} />
-
-        {/* Grid pattern overlay */}
-        <div style={{
-          position: 'absolute', inset: 0, opacity: 0.03,
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }} />
-
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '6rem', paddingBottom: '4rem' }}>
           <div style={{ maxWidth: '800px' }}>
             <AnimatedSection>
@@ -117,7 +100,7 @@ const Home: React.FC = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={100}>
-              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.75rem, 5.5vw, 4.5rem)', fontWeight: 900, lineHeight: 1.05 }}>
+              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2 }}>
                 Pioneering{' '}
                 <span className="gradient-text">AI Innovation</span>
                 {' '}for Enterprise Transformation
@@ -125,7 +108,7 @@ const Home: React.FC = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={200}>
-              <p style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', maxWidth: '640px', lineHeight: 1.7 }}>
+              <p style={{ fontSize: '1rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', maxWidth: '640px', lineHeight: 1.7 }}>
                 Expert consulting in Agentic AI, Multi-Agent Systems, Generative AI,
                 DevSecOps, Cloud Architecture, and Cybersecurity. We architect, build, and
                 deploy intelligent systems that transform how enterprises operate.
@@ -155,7 +138,7 @@ const Home: React.FC = () => {
                     display: 'flex', alignItems: 'center', gap: '0.5rem',
                     color: 'var(--color-text-muted)', fontSize: '0.875rem',
                   }}>
-                    <span style={{ color: 'var(--color-primary-400)' }}>{item.icon}</span>
+                    <span style={{ color: 'var(--color-primary-600)' }}>{item.icon}</span>
                     {item.label}
                   </div>
                 ))}
@@ -167,9 +150,9 @@ const Home: React.FC = () => {
 
       {/* Metrics Strip */}
       <section style={{
-        background: 'var(--color-dark-900)',
-        borderTop: '1px solid rgba(148, 163, 184, 0.08)',
-        borderBottom: '1px solid rgba(148, 163, 184, 0.08)',
+        background: 'white',
+        borderTop: '1px solid #e2e8f0',
+        borderBottom: '1px solid #e2e8f0',
         padding: '3rem 0',
       }}>
         <div className="container">
@@ -182,11 +165,11 @@ const Home: React.FC = () => {
             {metrics.map((metric, idx) => (
               <AnimatedSection key={metric.label} delay={idx * 100}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ color: 'var(--color-primary-400)' }}>
+                  <div style={{ color: 'var(--color-primary-600)' }}>
                     {metricIcons[metric.icon]}
                   </div>
-                  <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'white' }}>{metric.value}</div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{metric.label}</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-primary)' }}>{metric.value}</div>
+                  <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{metric.label}</div>
                 </div>
               </AnimatedSection>
             ))}
@@ -195,7 +178,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="section" style={{ background: 'var(--color-dark-950)' }}>
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -220,14 +203,14 @@ const Home: React.FC = () => {
                   <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
                     <div style={{
                       width: '48px', height: '48px', borderRadius: '12px',
-                      background: 'rgba(59, 130, 246, 0.1)',
-                      border: '1px solid rgba(59, 130, 246, 0.2)',
+                      background: 'var(--color-primary-50)',
+                      border: '1px solid var(--color-primary-100)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: 'var(--color-primary-400)', marginBottom: '1.25rem',
+                      color: 'var(--color-primary-600)', marginBottom: '1.25rem',
                     }}>
                       {iconMap[service.icon]}
                     </div>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>
+                    <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
                       {service.title}
                     </h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
@@ -255,7 +238,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section" style={{ background: 'var(--color-dark-900)' }}>
+      <section className="section" style={{ background: 'white' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
             <AnimatedSection>
@@ -279,7 +262,7 @@ const Home: React.FC = () => {
                     <div key={item.title} style={{ display: 'flex', gap: '0.875rem' }}>
                       <CheckCircle size={20} style={{ color: 'var(--color-success-500)', flexShrink: 0, marginTop: '0.125rem' }} />
                       <div>
-                        <div style={{ fontWeight: 600, color: 'white', marginBottom: '0.25rem' }}>{item.title}</div>
+                        <div style={{ fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '0.25rem' }}>{item.title}</div>
                         <div style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{item.desc}</div>
                       </div>
                     </div>
@@ -290,13 +273,13 @@ const Home: React.FC = () => {
 
             <AnimatedSection delay={200}>
               <div style={{
-                background: 'var(--gradient-card)',
+                background: 'white',
                 border: 'var(--border-subtle)',
                 borderRadius: 'var(--radius-2xl)',
                 padding: '2.5rem',
                 position: 'relative',
               }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', color: 'white' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-text-primary)' }}>
                   Our Technology Expertise
                 </h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
@@ -310,7 +293,7 @@ const Home: React.FC = () => {
                   ].map((group) => (
                     <div key={group.cat}>
                       <div style={{
-                        fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary-400)',
+                        fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary-600)',
                         textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem',
                       }}>
                         {group.cat}
@@ -330,7 +313,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="section" style={{ background: 'var(--color-dark-950)' }}>
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -350,14 +333,14 @@ const Home: React.FC = () => {
                 <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem' }}>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={16} fill="var(--color-primary-400)" color="var(--color-primary-400)" />
+                      <Star key={i} size={16} fill="var(--color-primary-500)" color="var(--color-primary-500)" />
                     ))}
                   </div>
                   <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.7, flex: 1, marginBottom: '1.5rem' }}>
                     "{t.content}"
                   </p>
-                  <div style={{ borderTop: '1px solid rgba(148, 163, 184, 0.08)', paddingTop: '1rem' }}>
-                    <div style={{ fontWeight: 600, color: 'white', fontSize: '0.9375rem' }}>{t.name}</div>
+                  <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1rem' }}>
+                    <div style={{ fontWeight: 600, color: 'var(--color-text-primary)', fontSize: '0.9375rem' }}>{t.name}</div>
                     <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
                       {t.title}, {t.company}
                     </div>
@@ -371,15 +354,9 @@ const Home: React.FC = () => {
 
       {/* AI Capabilities Highlight */}
       <section className="section" style={{
-        background: 'linear-gradient(135deg, var(--color-primary-950), var(--color-dark-900))',
-        position: 'relative',
-        overflow: 'hidden',
+        background: 'white',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%)',
-        }} />
-        <div className="container" style={{ position: 'relative' }}>
+        <div className="container">
           <AnimatedSection>
             <div className="section-header">
               <span className="section-label"><Network size={14} /> AI Architecture</span>
@@ -412,7 +389,7 @@ const Home: React.FC = () => {
             ].map((item, idx) => (
               <AnimatedSection key={item.title} delay={idx * 100}>
                 <div className="card" style={{ height: '100%' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
                     {item.title}
                   </h3>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.25rem', lineHeight: 1.6 }}>
@@ -434,7 +411,7 @@ const Home: React.FC = () => {
 
       {/* CTA Section */}
       <section className="section" style={{
-        background: 'var(--color-dark-950)',
+        background: 'var(--color-bg-secondary)',
       }}>
         <div className="container">
           <AnimatedSection>
@@ -443,16 +420,12 @@ const Home: React.FC = () => {
               maxWidth: '700px',
               margin: '0 auto',
               padding: '4rem 2rem',
-              background: 'var(--gradient-card)',
+              background: 'white',
               borderRadius: 'var(--radius-2xl)',
-              border: '1px solid rgba(59, 130, 246, 0.15)',
+              border: '1px solid #e2e8f0',
               position: 'relative',
               overflow: 'hidden',
             }}>
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
-              }} />
               <div style={{ position: 'relative' }}>
                 <h2 style={{ marginBottom: '1rem' }}>
                   Ready to Transform Your Business with <span className="gradient-text">AI</span>?

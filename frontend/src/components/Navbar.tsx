@@ -51,12 +51,10 @@ const Navbar: React.FC = () => {
         right: 0,
         zIndex: 1000,
         background: isScrolled
-          ? 'rgba(2, 6, 23, 0.95)'
-          : 'transparent',
+          ? 'rgba(255, 255, 255, 0.97)'
+          : 'white',
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-        borderBottom: isScrolled
-          ? '1px solid rgba(148, 163, 184, 0.1)'
-          : '1px solid transparent',
+        borderBottom: '1px solid #e2e8f0',
         transition: 'all 300ms ease',
       }}
     >
@@ -64,11 +62,11 @@ const Navbar: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '72px',
+        height: '56px',
       }}>
         {/* Logo */}
-        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-          <Logo size={40} showText={true} textSize="md" />
+        <Link to="/" style={{ textDecoration: 'none', color: 'var(--color-text-primary)' }}>
+          <Logo size={30} showText={true} textSize="sm" />
         </Link>
 
         {/* Desktop Nav */}
@@ -96,7 +94,7 @@ const Navbar: React.FC = () => {
                     background: 'none',
                     border: 'none',
                     color: 'var(--color-text-secondary)',
-                    fontSize: '0.875rem',
+                    fontSize: '0.8125rem',
                     fontWeight: 500,
                     cursor: 'pointer',
                     transition: 'color 150ms',
@@ -112,11 +110,11 @@ const Navbar: React.FC = () => {
                     top: '100%',
                     left: 0,
                     minWidth: '240px',
-                    background: 'rgba(15, 23, 42, 0.98)',
-                    border: '1px solid rgba(148, 163, 184, 0.1)',
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
                     borderRadius: 'var(--radius-lg)',
                     padding: '0.5rem',
-                    backdropFilter: 'blur(20px)',
+                    boxShadow: 'var(--shadow-lg)',
                     animation: 'fadeIn 0.15s ease-out',
                   }}>
                     {link.children.map((child) => (
@@ -126,18 +124,19 @@ const Navbar: React.FC = () => {
                         style={{
                           display: 'block',
                           padding: '0.625rem 1rem',
-                          color: location.pathname === child.path ? 'var(--color-primary-400)' : 'var(--color-text-secondary)',
-                          fontSize: '0.875rem',
+                          color: location.pathname === child.path ? 'var(--color-primary-600)' : 'var(--color-text-secondary)',
+                          fontSize: '0.8125rem',
                           borderRadius: 'var(--radius-md)',
                           transition: 'all 150ms',
+                          textDecoration: 'none',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)';
-                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.background = 'var(--color-bg-secondary)';
+                          e.currentTarget.style.color = 'var(--color-text-primary)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = location.pathname === child.path ? 'var(--color-primary-400)' : 'var(--color-text-secondary)';
+                          e.currentTarget.style.color = location.pathname === child.path ? 'var(--color-primary-600)' : 'var(--color-text-secondary)';
                         }}
                       >
                         {child.label}
@@ -152,8 +151,8 @@ const Navbar: React.FC = () => {
                 to={link.path!}
                 style={{
                   padding: '0.5rem 0.875rem',
-                  color: location.pathname === link.path ? 'var(--color-primary-400)' : 'var(--color-text-secondary)',
-                  fontSize: '0.875rem',
+                  color: location.pathname === link.path ? 'var(--color-primary-600)' : 'var(--color-text-secondary)',
+                  fontSize: '0.8125rem',
                   fontWeight: 500,
                   transition: 'color 150ms',
                   textDecoration: 'none',
@@ -176,7 +175,7 @@ const Navbar: React.FC = () => {
             display: 'none',
             background: 'none',
             border: 'none',
-            color: 'white',
+            color: 'var(--color-text-primary)',
             cursor: 'pointer',
             padding: '0.5rem',
           }}
@@ -190,8 +189,8 @@ const Navbar: React.FC = () => {
         <div
           className="mobile-menu"
           style={{
-            background: 'rgba(2, 6, 23, 0.98)',
-            borderTop: '1px solid rgba(148, 163, 184, 0.1)',
+            background: 'white',
+            borderTop: '1px solid #e2e8f0',
             padding: '1rem',
           }}
         >
@@ -216,7 +215,7 @@ const Navbar: React.FC = () => {
                       display: 'block',
                       padding: '0.625rem 1rem 0.625rem 2rem',
                       color: 'var(--color-text-secondary)',
-                      fontSize: '0.9375rem',
+                      fontSize: '0.8125rem',
                       textDecoration: 'none',
                     }}
                   >
@@ -232,7 +231,7 @@ const Navbar: React.FC = () => {
                   display: 'block',
                   padding: '0.75rem 1rem',
                   color: 'var(--color-text-secondary)',
-                  fontSize: '0.9375rem',
+                  fontSize: '0.8125rem',
                   textDecoration: 'none',
                 }}
               >
