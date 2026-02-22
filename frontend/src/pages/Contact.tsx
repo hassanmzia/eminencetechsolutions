@@ -40,10 +40,25 @@ const Contact: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      await submitContactMessage(form as any);
+      const cleanForm = Object.fromEntries(
+        Object.entries(form).filter(([_, v]) => v !== '')
+      );
+      await submitContactMessage(cleanForm as any);
       setSubmitted(true);
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Something went wrong. Please try again.');
+      const data = err.response?.data;
+      if (data && typeof data === 'object' && !data.detail) {
+        const messages = Object.entries(data)
+          .map(([field, errors]) => {
+            const label = field.replace(/_/g, ' ');
+            const msgs = Array.isArray(errors) ? errors.join(', ') : String(errors);
+            return `${label}: ${msgs}`;
+          })
+          .join('; ');
+        setError(messages || 'Validation failed. Please check your inputs.');
+      } else {
+        setError(data?.detail || 'Something went wrong. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
