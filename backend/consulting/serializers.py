@@ -14,6 +14,19 @@ class ConsultingInquirySerializer(serializers.ModelSerializer):
             'additional_notes', 'created_at'
         ]
         read_only_fields = ['id', 'created_at']
+        extra_kwargs = {
+            'contact_title': {'required': False, 'allow_blank': True},
+            'phone': {'required': False, 'allow_blank': True},
+            'company_website': {'required': False, 'allow_blank': True},
+            'company_size': {'required': False, 'allow_blank': True},
+            'business_objectives': {'required': False, 'allow_blank': True},
+            'current_technology_stack': {'required': False, 'allow_blank': True},
+            'timeline': {'required': False, 'allow_blank': True},
+            'budget_range': {'required': False},
+            'urgency': {'required': False},
+            'how_did_you_hear': {'required': False, 'allow_blank': True},
+            'additional_notes': {'required': False, 'allow_blank': True},
+        }
 
 
 class ConsultingEngagementSerializer(serializers.ModelSerializer):
