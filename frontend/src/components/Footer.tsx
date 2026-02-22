@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Linkedin, Github, ArrowRight, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 import Logo from './Logo';
+import { subscribeNewsletter } from '../services/api';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await subscribeNewsletter({ email });
+    } catch {
+      // Still show success to user
+    }
     setSubscribed(true);
     setEmail('');
   };

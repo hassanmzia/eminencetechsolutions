@@ -22,15 +22,6 @@ const iconMap: Record<string, React.ReactNode> = {
   Wifi: <Wifi size={28} />,
 };
 
-const metricIcons: Record<string, React.ReactNode> = {
-  Building2: <Building2 size={24} />,
-  Brain: <Brain size={24} />,
-  Cloud: <Cloud size={24} />,
-  Shield: <Shield size={24} />,
-  Users: <Users size={24} />,
-  Award: <Award size={24} />,
-};
-
 const services = [
   { title: 'Agentic AI Systems', slug: 'agentic-ai-systems', icon: 'Brain', desc: 'Autonomous AI agents that reason, plan, and execute complex enterprise tasks with human oversight.', techs: ['LangChain', 'MCP', 'A2A'], img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80' },
   { title: 'Generative AI Solutions', slug: 'generative-ai-solutions', icon: 'Sparkles', desc: 'Custom LLM applications, RAG pipelines, and enterprise generative AI tailored to your data.', techs: ['GPT-4', 'Claude', 'RAG'], img: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80' },
@@ -44,12 +35,6 @@ const services = [
   { title: 'IoT Device Integration', slug: 'iot-device-integration', icon: 'Wifi', desc: 'End-to-end IoT solutions connecting devices, sensors, and edge computing to enterprise AI and cloud platforms.', techs: ['MQTT', 'Edge AI', 'AWS IoT', 'Azure IoT'], img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80' },
 ];
 
-const metrics = [
-  { label: 'Enterprise Clients', value: '150+', icon: 'Building2' },
-  { label: 'AI Models Deployed', value: '500+', icon: 'Brain' },
-  { label: 'Cloud Migrations', value: '200+', icon: 'Cloud' },
-  { label: 'Security Certifications', value: '50+', icon: 'Shield' },
-];
 
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
@@ -120,7 +105,7 @@ const Home: React.FC = () => {
         background: 'var(--color-bg-secondary)',
       }}>
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '3rem', paddingBottom: '4rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+          <div className="hero-grid">
             <div>
               <AnimatedSection>
                 <div className="section-label" style={{ marginBottom: '1.5rem' }}>
@@ -192,7 +177,7 @@ const Home: React.FC = () => {
                   alt="Team collaborating on AI solutions"
                   className="hero-side-img"
                 />
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="sub-image-grid">
                   <img
                     src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80"
                     alt="Digital technology visualization"
@@ -210,34 +195,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Metrics Strip */}
-      <section style={{
-        background: 'var(--color-bg-primary)',
-        borderTop: '1px solid var(--color-border)',
-        borderBottom: '1px solid var(--color-border)',
-        padding: '3rem 0',
-      }}>
-        <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '2rem',
-            textAlign: 'center',
-          }}>
-            {metrics.map((metric, idx) => (
-              <AnimatedSection key={metric.label} delay={idx * 100}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ color: 'var(--color-primary-600)' }}>
-                    {metricIcons[metric.icon]}
-                  </div>
-                  <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-primary)' }}>{metric.value}</div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{metric.label}</div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Services Section */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
@@ -305,7 +262,7 @@ const Home: React.FC = () => {
       {/* Why Choose Us */}
       <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+          <div className="content-grid">
             <AnimatedSection>
               <div>
                 <span className="section-label"><Star size={14} /> Why Eminence</span>
@@ -322,7 +279,7 @@ const Home: React.FC = () => {
                     { title: 'Security & Compliance Built-In', desc: 'Federal-grade security with ATO, FedRAMP, and NIST compliance integrated from day one.' },
                     { title: 'Full Lifecycle Support', desc: 'From strategic roadmapping through deployment and ongoing optimization - we are with you every step.' },
                     { title: 'Multi-Cloud Expertise', desc: 'Deploy anywhere with our Kubernetes, OpenShift, and multi-cloud orchestration capabilities across AWS, Azure, and GCP.' },
-                    { title: 'Proven Track Record', desc: '150+ enterprise clients, 500+ AI models deployed, and deep experience across government, healthcare, financial services, and defense.' },
+                    { title: 'Proven Track Record', desc: 'Deep experience across government, healthcare, financial services, and defense sectors.' },
                   ].map((item) => (
                     <div key={item.title} style={{ display: 'flex', gap: '0.875rem' }}>
                       <CheckCircle size={20} style={{ color: 'var(--color-success-500)', flexShrink: 0, marginTop: '0.125rem' }} />
@@ -347,7 +304,7 @@ const Home: React.FC = () => {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-text-primary)' }}>
                   Our Technology Expertise
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <div className="tech-grid">
                   {[
                     { cat: 'AI/ML', items: ['LangChain', 'AutoGen', 'CrewAI', 'PyTorch', 'Hugging Face'] },
                     { cat: 'Protocols', items: ['MCP', 'A2A', 'OpenAI API', 'Claude API'] },

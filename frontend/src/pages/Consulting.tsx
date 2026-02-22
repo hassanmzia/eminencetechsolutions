@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Rocket, CheckCircle, ArrowRight, Send, FileText,
-  Target, Lightbulb, Settings, BarChart,
+  Target, Lightbulb, Settings, BarChart, Loader2,
 } from 'lucide-react';
+import { submitConsultingInquiry } from '../services/api';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -53,6 +54,8 @@ const urgencyLevels = [
 
 const Consulting: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     company_name: '', contact_name: '', contact_title: '', email: '', phone: '',
     company_website: '', industry: '', company_size: '', service_type: 'agentic_ai',
@@ -65,9 +68,18 @@ const Consulting: React.FC = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+    try {
+      await submitConsultingInquiry(form as any);
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -152,10 +164,15 @@ const Consulting: React.FC = () => {
                     <FileText size={24} style={{ color: 'var(--color-primary-600)' }} />
                     <h2 style={{ color: 'var(--color-text-primary)' }}>Consulting Inquiry Form</h2>
                   </div>
+                  {error && (
+                    <div style={{ padding: '0.75rem 1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 'var(--radius-md)', color: '#dc2626', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                      {error}
+                    </div>
+                  )}
 
                   {/* Contact Info */}
                   <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--color-border)' }}>Contact Information</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+                  <div className="form-grid" style={{ marginBottom: '2rem' }}>
                     <div className="form-group"><label className="form-label">Company Name *</label><input name="company_name" value={form.company_name} onChange={handleChange} className="form-input" required placeholder="Acme Corp" /></div>
                     <div className="form-group"><label className="form-label">Contact Name *</label><input name="contact_name" value={form.contact_name} onChange={handleChange} className="form-input" required placeholder="John Doe" /></div>
                     <div className="form-group"><label className="form-label">Title</label><input name="contact_title" value={form.contact_title} onChange={handleChange} className="form-input" placeholder="CTO" /></div>
@@ -168,16 +185,16 @@ const Consulting: React.FC = () => {
 
                   {/* Project Info */}
                   <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--color-border)' }}>Project Details</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Service Type *</label>
+                  <div className="form-grid" style={{ marginBottom: '2rem' }}>
+                    <div className="form-group form-span-full"><label className="form-label">Service Type *</label>
                       <select name="service_type" value={form.service_type} onChange={handleChange} className="form-select">
                         {serviceTypes.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
                       </select>
                     </div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Project Title *</label><input name="project_title" value={form.project_title} onChange={handleChange} className="form-input" required placeholder="AI-Powered Document Processing System" /></div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Project Description *</label><textarea name="project_description" value={form.project_description} onChange={handleChange} className="form-textarea" required rows={4} placeholder="Describe your project requirements, goals, and any specific challenges..." /></div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Business Objectives</label><textarea name="business_objectives" value={form.business_objectives} onChange={handleChange} className="form-textarea" rows={3} placeholder="What business outcomes are you looking to achieve?" /></div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Current Technology Stack</label><textarea name="current_technology_stack" value={form.current_technology_stack} onChange={handleChange} className="form-textarea" rows={2} placeholder="What technologies does your organization currently use?" /></div>
+                    <div className="form-group form-span-full"><label className="form-label">Project Title *</label><input name="project_title" value={form.project_title} onChange={handleChange} className="form-input" required placeholder="AI-Powered Document Processing System" /></div>
+                    <div className="form-group form-span-full"><label className="form-label">Project Description *</label><textarea name="project_description" value={form.project_description} onChange={handleChange} className="form-textarea" required rows={4} placeholder="Describe your project requirements, goals, and any specific challenges..." /></div>
+                    <div className="form-group form-span-full"><label className="form-label">Business Objectives</label><textarea name="business_objectives" value={form.business_objectives} onChange={handleChange} className="form-textarea" rows={3} placeholder="What business outcomes are you looking to achieve?" /></div>
+                    <div className="form-group form-span-full"><label className="form-label">Current Technology Stack</label><textarea name="current_technology_stack" value={form.current_technology_stack} onChange={handleChange} className="form-textarea" rows={2} placeholder="What technologies does your organization currently use?" /></div>
                     <div className="form-group"><label className="form-label">Timeline</label><input name="timeline" value={form.timeline} onChange={handleChange} className="form-input" placeholder="Q2 2025" /></div>
                     <div className="form-group"><label className="form-label">Budget Range</label>
                       <select name="budget_range" value={form.budget_range} onChange={handleChange} className="form-select">
@@ -190,11 +207,11 @@ const Consulting: React.FC = () => {
                       </select>
                     </div>
                     <div className="form-group"><label className="form-label">How Did You Hear About Us?</label><input name="how_did_you_hear" value={form.how_did_you_hear} onChange={handleChange} className="form-input" placeholder="Google, referral, etc." /></div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Additional Notes</label><textarea name="additional_notes" value={form.additional_notes} onChange={handleChange} className="form-textarea" rows={3} placeholder="Anything else you'd like us to know?" /></div>
+                    <div className="form-group form-span-full"><label className="form-label">Additional Notes</label><textarea name="additional_notes" value={form.additional_notes} onChange={handleChange} className="form-textarea" rows={3} placeholder="Anything else you'd like us to know?" /></div>
                   </div>
 
-                  <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                    Submit Consulting Inquiry <Send size={18} />
+                  <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
+                    {loading ? <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> Submitting...</> : <>Submit Consulting Inquiry <Send size={18} /></>}
                   </button>
                 </form>
               )}

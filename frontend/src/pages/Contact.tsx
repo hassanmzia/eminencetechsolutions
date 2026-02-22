@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Mail, MapPin, Phone, Clock, Send, CheckCircle, MessageSquare,
-  Users, Newspaper, HelpCircle, ArrowRight,
+  Users, Newspaper, HelpCircle, ArrowRight, Loader2,
 } from 'lucide-react';
+import { submitContactMessage } from '../services/api';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -23,6 +24,8 @@ const inquiryTypes = [
 
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '',
     inquiry_type: 'general', subject: '', message: '',
@@ -32,9 +35,18 @@ const Contact: React.FC = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+    try {
+      await submitContactMessage(form as any);
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -83,7 +95,12 @@ const Contact: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit}>
                   <h2 style={{ color: 'var(--color-text-primary)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>Send Us a Message</h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  {error && (
+                    <div style={{ padding: '0.75rem 1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 'var(--radius-md)', color: '#dc2626', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                      {error}
+                    </div>
+                  )}
+                  <div className="form-grid">
                     <div className="form-group">
                       <label className="form-label">Full Name *</label>
                       <input name="name" value={form.name} onChange={handleChange} className="form-input" required placeholder="Your full name" />
@@ -100,23 +117,23 @@ const Contact: React.FC = () => {
                       <label className="form-label">Company</label>
                       <input name="company" value={form.company} onChange={handleChange} className="form-input" placeholder="Your company" />
                     </div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                    <div className="form-group form-span-full">
                       <label className="form-label">Inquiry Type</label>
                       <select name="inquiry_type" value={form.inquiry_type} onChange={handleChange} className="form-select">
                         {inquiryTypes.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                       </select>
                     </div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                    <div className="form-group form-span-full">
                       <label className="form-label">Subject *</label>
                       <input name="subject" value={form.subject} onChange={handleChange} className="form-input" required placeholder="What is this about?" />
                     </div>
-                    <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                    <div className="form-group form-span-full">
                       <label className="form-label">Message *</label>
                       <textarea name="message" value={form.message} onChange={handleChange} className="form-textarea" required rows={5} placeholder="Tell us more about your needs..." />
                     </div>
-                    <div style={{ gridColumn: 'span 2' }}>
-                      <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                        Send Message <Send size={16} />
+                    <div className="form-span-full">
+                      <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
+                        {loading ? <><Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> Sending...</> : <>Send Message <Send size={16} /></>}
                       </button>
                     </div>
                   </div>
