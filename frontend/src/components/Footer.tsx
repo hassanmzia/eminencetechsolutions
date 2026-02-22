@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
   return (
     <footer style={{
       background: 'var(--color-bg-secondary)',
-      borderTop: '1px solid #e2e8f0',
+      borderTop: '1px solid var(--color-border)',
       paddingTop: '4rem',
     }}>
       <div className="container">
@@ -107,8 +107,8 @@ const Footer: React.FC = () => {
                   style={{
                     flex: 1,
                     padding: '0.625rem 0.875rem',
-                    background: 'white',
-                    border: '1px solid #d1d5db',
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: 'var(--radius-md)',
                     color: 'var(--color-text-primary)',
                     fontSize: '0.8125rem',
@@ -132,7 +132,7 @@ const Footer: React.FC = () => {
               ].map((social) => (
                 <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} style={{
                   width: '30px', height: '30px', borderRadius: '8px',
-                  background: 'white', border: '1px solid #e2e8f0',
+                  background: 'var(--color-surface)', border: '1px solid var(--color-border)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'var(--color-text-muted)', transition: 'all 150ms',
                 }}>
@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid #e2e8f0',
+          borderTop: '1px solid var(--color-border)',
           padding: '1.5rem 0',
           display: 'flex',
           justifyContent: 'space-between',

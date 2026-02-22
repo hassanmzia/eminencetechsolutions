@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import {
   Brain, Target, Eye, Users, Award, MapPin, ArrowRight,
-  CheckCircle, Globe, Shield, Cpu, Linkedin,
+  CheckCircle, Globe, Shield, Cpu,
 } from 'lucide-react';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
@@ -15,15 +15,6 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
     </div>
   );
 };
-
-const team = [
-  { name: 'Hassan M. Zia', title: 'Founder & CEO', bio: 'Visionary technologist with 20+ years in enterprise IT, AI/ML, cloud architecture, and cybersecurity.', specs: ['AI Strategy', 'Enterprise Architecture', 'Cloud Solutions', 'Agentic AI'] },
-  { name: 'Dr. Sarah Chen', title: 'Chief AI Officer', bio: 'PhD in ML with extensive experience building production AI systems including agentic AI and multi-agent architectures.', specs: ['Machine Learning', 'Agentic AI', 'NLP', 'Multi-Agent Systems'] },
-  { name: 'Michael Torres', title: 'VP of Cloud Engineering', bio: 'Cloud expert with deep expertise across AWS, Azure, GCP. Certified Kubernetes administrator.', specs: ['Multi-Cloud', 'Kubernetes', 'OpenShift', 'DevSecOps'] },
-  { name: 'Priya Sharma', title: 'Director of AI Governance', bio: 'Leading authority on AI ethics, governance, and regulatory compliance including EU AI Act and NIST AI RMF.', specs: ['AI Ethics', 'Governance', 'Compliance', 'NIST AI RMF'] },
-  { name: 'David Kim', title: 'Head of Cybersecurity', bio: 'CISSP-certified expert with extensive experience in federal ATO processes and AI security.', specs: ['Cybersecurity', 'ATO', 'FedRAMP', 'AI Security'] },
-  { name: 'Alex Rodriguez', title: 'Principal Solutions Architect', bio: 'Full-stack architect specializing in scalable enterprise systems with integrated AI capabilities.', specs: ['Solution Architecture', 'Microservices', 'MLOps', 'API Design'] },
-];
 
 const About: React.FC = () => (
   <div style={{ paddingTop: '6rem' }}>
@@ -45,7 +36,7 @@ const About: React.FC = () => (
     </section>
 
     {/* Mission & Vision */}
-    <section className="section" style={{ background: 'white' }}>
+    <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
       <div className="container">
         <div className="grid grid-2" style={{ gap: '2rem' }}>
           <AnimatedSection>
@@ -79,7 +70,7 @@ const About: React.FC = () => (
     </section>
 
     {/* Values */}
-    <section className="section" style={{ background: 'white' }}>
+    <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
       <div className="container">
         <AnimatedSection>
           <div className="section-header">
@@ -106,38 +97,8 @@ const About: React.FC = () => (
       </div>
     </section>
 
-    {/* Team */}
-    <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
-      <div className="container">
-        <AnimatedSection>
-          <div className="section-header">
-            <span className="section-label"><Users size={14} /> Leadership</span>
-            <h2 className="section-title">Meet Our <span className="gradient-text">Expert Team</span></h2>
-            <p className="section-subtitle">Industry veterans with deep expertise across AI, cloud, security, and enterprise architecture.</p>
-          </div>
-        </AnimatedSection>
-        <div className="grid grid-3">
-          {team.map((m, i) => (
-            <AnimatedSection key={m.name} delay={i * 75}>
-              <div className="card" style={{ height: '100%' }}>
-                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'var(--color-primary-600)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem' }}>
-                  {m.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <h4 style={{ color: 'var(--color-text-primary)', marginBottom: '0.25rem' }}>{m.name}</h4>
-                <div style={{ color: 'var(--color-primary-600)', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.75rem' }}>{m.title}</div>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1rem', lineHeight: 1.6 }}>{m.bio}</p>
-                <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                  {m.specs.map(s => <span key={s} className="badge" style={{ fontSize: '0.6875rem' }}>{s}</span>)}
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
     {/* Location */}
-    <section className="section" style={{ background: 'white' }}>
+    <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
       <div className="container" style={{ textAlign: 'center' }}>
         <AnimatedSection>
           <MapPin size={32} style={{ color: 'var(--color-primary-600)', marginBottom: '1rem' }} />

@@ -78,9 +78,9 @@ const Blog: React.FC = () => (
                   {post.excerpt}
                 </p>
                 <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-                  {post.tags.map(t => <span key={t} style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)', background: '#f1f5f9', padding: '0.125rem 0.5rem', borderRadius: '4px' }}>{t}</span>)}
+                  {post.tags.map(t => <span key={t} style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)', background: 'var(--color-bg-tertiary)', padding: '0.125rem 0.5rem', borderRadius: '4px' }}>{t}</span>)}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #e2e8f0', paddingTop: '1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--color-border)', paddingTop: '1rem' }}>
                   <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><User size={12} /> {post.author}</span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Calendar size={12} /> {post.date}</span>

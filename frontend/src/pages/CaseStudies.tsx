@@ -97,7 +97,7 @@ const CaseStudies: React.FC = () => (
 
         <AnimatedSection>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <div className="card" style={{ display: 'inline-block', maxWidth: '500px', textAlign: 'center', background: 'white' }}>
+            <div className="card" style={{ display: 'inline-block', maxWidth: '500px', textAlign: 'center', background: 'var(--color-surface)' }}>
               <h3 style={{ color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>Have a Similar Challenge?</h3>
               <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem', fontSize: '0.9375rem' }}>
                 Let us show you how our expertise can deliver results for your organization.

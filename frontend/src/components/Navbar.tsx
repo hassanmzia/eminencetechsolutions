@@ -51,10 +51,10 @@ const Navbar: React.FC = () => {
         right: 0,
         zIndex: 1000,
         background: isScrolled
-          ? 'rgba(255, 255, 255, 0.97)'
-          : 'white',
+          ? 'rgba(250, 248, 245, 0.97)'
+          : 'var(--color-surface)',
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-        borderBottom: '1px solid #e2e8f0',
+        borderBottom: '1px solid var(--color-border)',
         transition: 'all 300ms ease',
       }}
     >
@@ -110,8 +110,8 @@ const Navbar: React.FC = () => {
                     top: '100%',
                     left: 0,
                     minWidth: '240px',
-                    background: 'white',
-                    border: '1px solid #e2e8f0',
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: 'var(--radius-lg)',
                     padding: '0.5rem',
                     boxShadow: 'var(--shadow-lg)',
@@ -189,8 +189,8 @@ const Navbar: React.FC = () => {
         <div
           className="mobile-menu"
           style={{
-            background: 'white',
-            borderTop: '1px solid #e2e8f0',
+            background: 'var(--color-surface)',
+            borderTop: '1px solid var(--color-border)',
             padding: '1rem',
           }}
         >
