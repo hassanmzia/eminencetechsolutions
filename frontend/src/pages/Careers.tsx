@@ -59,17 +59,26 @@ const Careers: React.FC = () => {
       {/* Hero */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
-          <AnimatedSection>
-            <div style={{ maxWidth: '700px' }}>
-              <span className="section-label"><Briefcase size={14} /> Careers</span>
-              <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
-                Build the Future of <span className="gradient-text">AI With Us</span>
-              </h1>
-              <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-                Join a team of passionate innovators shaping the future of enterprise AI. We offer challenging work, continuous learning, and the opportunity to make real impact.
-              </p>
-            </div>
-          </AnimatedSection>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            <AnimatedSection>
+              <div>
+                <span className="section-label"><Briefcase size={14} /> Careers</span>
+                <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
+                  Build the Future of <span className="gradient-text">AI With Us</span>
+                </h1>
+                <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+                  Join a team of passionate innovators shaping the future of enterprise AI. We offer challenging work, continuous learning, and the opportunity to make real impact.
+                </p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={200}>
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=80"
+                alt="Diverse team collaborating"
+                className="hero-side-img"
+              />
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -77,6 +86,11 @@ const Careers: React.FC = () => {
       <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
           <AnimatedSection>
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+              alt="Team working together in a creative space"
+              className="section-banner-img"
+            />
             <div className="section-header">
               <h2 className="section-title">Why Join <span className="gradient-text">Eminence</span></h2>
             </div>
