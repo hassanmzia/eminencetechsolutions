@@ -150,9 +150,9 @@ const Home: React.FC = () => {
 
       {/* Metrics Strip */}
       <section style={{
-        background: 'white',
-        borderTop: '1px solid #e2e8f0',
-        borderBottom: '1px solid #e2e8f0',
+        background: 'var(--color-bg-primary)',
+        borderTop: '1px solid var(--color-border)',
+        borderBottom: '1px solid var(--color-border)',
         padding: '3rem 0',
       }}>
         <div className="container">
@@ -238,7 +238,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section" style={{ background: 'white' }}>
+      <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
             <AnimatedSection>
@@ -273,7 +273,7 @@ const Home: React.FC = () => {
 
             <AnimatedSection delay={200}>
               <div style={{
-                background: 'white',
+                background: 'var(--color-surface)',
                 border: 'var(--border-subtle)',
                 borderRadius: 'var(--radius-2xl)',
                 padding: '2.5rem',
@@ -339,7 +339,7 @@ const Home: React.FC = () => {
                   <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.7, flex: 1, marginBottom: '1.5rem' }}>
                     "{t.content}"
                   </p>
-                  <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1rem' }}>
+                  <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem' }}>
                     <div style={{ fontWeight: 600, color: 'var(--color-text-primary)', fontSize: '0.9375rem' }}>{t.name}</div>
                     <div style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
                       {t.title}, {t.company}
@@ -354,7 +354,7 @@ const Home: React.FC = () => {
 
       {/* AI Capabilities Highlight */}
       <section className="section" style={{
-        background: 'white',
+        background: 'var(--color-bg-primary)',
       }}>
         <div className="container">
           <AnimatedSection>
@@ -420,9 +420,9 @@ const Home: React.FC = () => {
               maxWidth: '700px',
               margin: '0 auto',
               padding: '4rem 2rem',
-              background: 'white',
+              background: 'var(--color-surface)',
               borderRadius: 'var(--radius-2xl)',
-              border: '1px solid #e2e8f0',
+              border: '1px solid var(--color-border)',
               position: 'relative',
               overflow: 'hidden',
             }}>

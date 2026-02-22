@@ -102,8 +102,8 @@ const ChatWidget: React.FC = () => {
       maxWidth: 'calc(100vw - 2rem)',
       height: '480px',
       maxHeight: 'calc(100vh - 4rem)',
-      background: 'white',
-      border: '1px solid #e2e8f0',
+      background: 'var(--color-surface)',
+      border: '1px solid var(--color-border)',
       borderRadius: 'var(--radius-2xl)',
       display: 'flex',
       flexDirection: 'column',
@@ -183,10 +183,10 @@ const ChatWidget: React.FC = () => {
               borderRadius: msg.role === 'user' ? '1rem 1rem 0.25rem 1rem' : '1rem 1rem 1rem 0.25rem',
               background: msg.role === 'user'
                 ? 'var(--color-primary-600)'
-                : '#f1f5f9',
+                : 'var(--color-bg-tertiary)',
               border: msg.role === 'user'
                 ? 'none'
-                : '1px solid #e2e8f0',
+                : '1px solid var(--color-border)',
               fontSize: '0.75rem',
               lineHeight: 1.6,
               color: msg.role === 'user' ? 'white' : 'var(--color-text-primary)',
@@ -223,7 +223,7 @@ const ChatWidget: React.FC = () => {
       {/* Input */}
       <div style={{
         padding: '0.75rem 1rem',
-        borderTop: '1px solid #e2e8f0',
+        borderTop: '1px solid var(--color-border)',
         display: 'flex',
         gap: '0.5rem',
       }}>
@@ -236,8 +236,8 @@ const ChatWidget: React.FC = () => {
           style={{
             flex: 1,
             padding: '0.625rem 0.875rem',
-            background: '#f8fafc',
-            border: '1px solid #e2e8f0',
+            background: 'var(--color-bg-secondary)',
+            border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-lg)',
             color: 'var(--color-text-primary)',
             fontSize: '0.8125rem',
@@ -250,7 +250,7 @@ const ChatWidget: React.FC = () => {
           disabled={!input.trim() || isLoading}
           style={{
             padding: '0.625rem',
-            background: input.trim() ? 'var(--color-primary-600)' : '#e2e8f0',
+            background: input.trim() ? 'var(--color-primary-600)' : 'var(--color-border)',
             border: 'none',
             borderRadius: 'var(--radius-lg)',
             cursor: input.trim() ? 'pointer' : 'default',

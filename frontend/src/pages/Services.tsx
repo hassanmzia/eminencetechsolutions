@@ -103,7 +103,7 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
 
 const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }) => (
   <div style={{ paddingTop: '6rem' }}>
-    <section className="section" style={{ background: 'white' }}>
+    <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
       <div className="container">
         <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem', marginBottom: '2rem', textDecoration: 'none' }}>
           <ArrowLeft size={16} /> Back to All Services

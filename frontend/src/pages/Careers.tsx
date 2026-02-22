@@ -74,7 +74,7 @@ const Careers: React.FC = () => {
       </section>
 
       {/* Benefits */}
-      <section className="section" style={{ background: 'white' }}>
+      <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -128,7 +128,7 @@ const Careers: React.FC = () => {
                   </div>
 
                   {expandedJob === job.slug && (
-                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0' }}>
+                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
                       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.25rem' }}>{job.description}</p>
 
                       <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Requirements</h4>

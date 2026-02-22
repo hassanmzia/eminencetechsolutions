@@ -90,7 +90,7 @@ const Consulting: React.FC = () => {
       </section>
 
       {/* Process */}
-      <section className="section" style={{ background: 'white' }}>
+      <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -145,7 +145,7 @@ const Consulting: React.FC = () => {
                   </div>
 
                   {/* Contact Info */}
-                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Contact Information</h3>
+                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--color-border)' }}>Contact Information</h3>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
                     <div className="form-group"><label className="form-label">Company Name *</label><input name="company_name" value={form.company_name} onChange={handleChange} className="form-input" required placeholder="Acme Corp" /></div>
                     <div className="form-group"><label className="form-label">Contact Name *</label><input name="contact_name" value={form.contact_name} onChange={handleChange} className="form-input" required placeholder="John Doe" /></div>
@@ -158,7 +158,7 @@ const Consulting: React.FC = () => {
                   </div>
 
                   {/* Project Info */}
-                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Project Details</h3>
+                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--color-border)' }}>Project Details</h3>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
                     <div className="form-group" style={{ gridColumn: 'span 2' }}><label className="form-label">Service Type *</label>
                       <select name="service_type" value={form.service_type} onChange={handleChange} className="form-select">

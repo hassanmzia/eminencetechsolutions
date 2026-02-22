@@ -55,13 +55,13 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'white' }}>
+      <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
             {/* Contact Form */}
             <AnimatedSection>
               {submitted ? (
-                <div className="card" style={{ textAlign: 'center', padding: '3rem', background: 'white' }}>
+                <div className="card" style={{ textAlign: 'center', padding: '3rem', background: 'var(--color-surface)' }}>
                   <CheckCircle size={56} style={{ color: 'var(--color-success-500)', marginBottom: '1.5rem' }} />
                   <h2 style={{ color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>Message Sent!</h2>
                   <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>
@@ -129,7 +129,7 @@ const Contact: React.FC = () => {
                   { icon: <MapPin size={20} />, title: 'Office', detail: '44330 Mercure Circle', sub: 'Sterling, VA 20166' },
                   { icon: <Clock size={20} />, title: 'Business Hours', detail: 'Monday - Friday', sub: '9:00 AM - 6:00 PM EST' },
                 ].map((item) => (
-                  <div key={item.title} className="card" style={{ display: 'flex', gap: '1rem', alignItems: 'start', background: 'white' }}>
+                  <div key={item.title} className="card" style={{ display: 'flex', gap: '1rem', alignItems: 'start', background: 'var(--color-surface)' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', flexShrink: 0 }}>
                       {item.icon}
                     </div>
