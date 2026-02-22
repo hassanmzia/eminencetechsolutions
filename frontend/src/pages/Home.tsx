@@ -68,16 +68,27 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
 const Home: React.FC = () => {
   return (
     <div>
+      {/* Banner Image */}
+      <section style={{ background: 'var(--color-bg-secondary)', paddingTop: '5rem' }}>
+        <div className="container">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80"
+            alt="Modern corporate building"
+            className="section-banner-img"
+            style={{ height: '340px', marginBottom: 0 }}
+          />
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section style={{
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
         background: 'var(--color-bg-secondary)',
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '6rem', paddingBottom: '4rem' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '3rem', paddingBottom: '4rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
             <div>
               <AnimatedSection>
@@ -165,20 +176,6 @@ const Home: React.FC = () => {
               </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
-
-      {/* Banner Image */}
-      <section style={{ background: 'var(--color-bg-primary)', padding: '2rem 0 0' }}>
-        <div className="container">
-          <AnimatedSection>
-            <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
-              alt="Team collaborating on innovative solutions"
-              className="section-banner-img"
-              style={{ height: '300px' }}
-            />
-          </AnimatedSection>
         </div>
       </section>
 
