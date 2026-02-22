@@ -8,7 +8,7 @@ import {
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${delay}ms` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
 
   return (
     <div style={{ paddingTop: '6rem' }}>
-      <section className="section" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <AnimatedSection>
             <div style={{ maxWidth: '700px' }}>
@@ -55,15 +55,15 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ background: 'white' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
             {/* Contact Form */}
             <AnimatedSection>
               {submitted ? (
-                <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
+                <div className="card" style={{ textAlign: 'center', padding: '3rem', background: 'white' }}>
                   <CheckCircle size={56} style={{ color: 'var(--color-success-500)', marginBottom: '1.5rem' }} />
-                  <h2 style={{ color: 'white', marginBottom: '0.75rem' }}>Message Sent!</h2>
+                  <h2 style={{ color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>Message Sent!</h2>
                   <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>
                     Thank you for reaching out. Our team will get back to you within 24 hours.
                   </p>
@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
-                  <h2 style={{ color: 'white', marginBottom: '1.5rem', fontSize: '1.5rem' }}>Send Us a Message</h2>
+                  <h2 style={{ color: 'var(--color-text-primary)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>Send Us a Message</h2>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div className="form-group">
                       <label className="form-label">Full Name *</label>
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
             {/* Contact Info */}
             <AnimatedSection delay={200}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <h2 style={{ color: 'white', fontSize: '1.5rem' }}>Get in Touch</h2>
+                <h2 style={{ color: 'var(--color-text-primary)', fontSize: '1.5rem' }}>Get in Touch</h2>
                 <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
                   Our team is ready to help you navigate your AI transformation journey. Reach out through any of the channels below.
                 </p>
@@ -129,20 +129,20 @@ const Contact: React.FC = () => {
                   { icon: <MapPin size={20} />, title: 'Office', detail: '44330 Mercure Circle', sub: 'Sterling, VA 20166' },
                   { icon: <Clock size={20} />, title: 'Business Hours', detail: 'Monday - Friday', sub: '9:00 AM - 6:00 PM EST' },
                 ].map((item) => (
-                  <div key={item.title} className="card" style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-400)', flexShrink: 0 }}>
+                  <div key={item.title} className="card" style={{ display: 'flex', gap: '1rem', alignItems: 'start', background: 'white' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', flexShrink: 0 }}>
                       {item.icon}
                     </div>
                     <div>
-                      <div style={{ fontWeight: 600, color: 'white', fontSize: '0.9375rem' }}>{item.title}</div>
+                      <div style={{ fontWeight: 600, color: 'var(--color-text-primary)', fontSize: '0.9375rem' }}>{item.title}</div>
                       <div style={{ color: 'var(--color-text-secondary)', fontSize: '0.875rem' }}>{item.detail}</div>
                       <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8125rem' }}>{item.sub}</div>
                     </div>
                   </div>
                 ))}
 
-                <div className="card" style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1))', border: '1px solid rgba(59,130,246,0.2)' }}>
-                  <h3 style={{ color: 'white', fontSize: '1rem', marginBottom: '0.5rem' }}>Looking for a Consulting Engagement?</h3>
+                <div className="card" style={{ background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)' }}>
+                  <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1rem', marginBottom: '0.5rem' }}>Looking for a Consulting Engagement?</h3>
                   <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', marginBottom: '1rem' }}>
                     For detailed project inquiries, use our dedicated consulting form for a faster response.
                   </p>

@@ -72,24 +72,23 @@ const ChatWidget: React.FC = () => {
           position: 'fixed',
           bottom: '1.5rem',
           right: '1.5rem',
-          width: '60px',
-          height: '60px',
+          width: '48px',
+          height: '48px',
           borderRadius: '50%',
-          background: 'var(--gradient-accent)',
+          background: 'var(--color-primary-600)',
           border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)',
+          boxShadow: 'var(--shadow-lg)',
           zIndex: 9999,
           transition: 'all 300ms',
-          animation: 'pulse-glow 3s infinite',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
         onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
       >
-        <MessageCircle size={26} color="white" />
+        <MessageCircle size={22} color="white" />
       </button>
     );
   }
@@ -99,24 +98,24 @@ const ChatWidget: React.FC = () => {
       position: 'fixed',
       bottom: '1.5rem',
       right: '1.5rem',
-      width: '400px',
+      width: '370px',
       maxWidth: 'calc(100vw - 2rem)',
-      height: '560px',
+      height: '480px',
       maxHeight: 'calc(100vh - 4rem)',
-      background: 'var(--color-dark-900)',
-      border: '1px solid rgba(148, 163, 184, 0.15)',
+      background: 'white',
+      border: '1px solid #e2e8f0',
       borderRadius: 'var(--radius-2xl)',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
       zIndex: 9999,
-      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
+      boxShadow: 'var(--shadow-xl)',
       animation: 'fadeInUp 0.3s ease-out',
     }}>
       {/* Header */}
       <div style={{
-        padding: '1rem 1.25rem',
-        background: 'linear-gradient(135deg, var(--color-primary-900), var(--color-primary-800))',
+        padding: '0.875rem 1.25rem',
+        background: 'var(--color-primary-600)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -130,7 +129,7 @@ const ChatWidget: React.FC = () => {
             <Bot size={18} color="white" />
           </div>
           <div>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'white' }}>AI Assistant</div>
+            <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'white' }}>AI Assistant</div>
             <div style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.6)' }}>Multi-Agent System</div>
           </div>
         </div>
@@ -168,7 +167,7 @@ const ChatWidget: React.FC = () => {
             {msg.agent && (
               <div style={{
                 fontSize: '0.6875rem',
-                color: 'var(--color-primary-400)',
+                color: 'var(--color-primary-600)',
                 marginBottom: '0.25rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -184,16 +183,16 @@ const ChatWidget: React.FC = () => {
               borderRadius: msg.role === 'user' ? '1rem 1rem 0.25rem 1rem' : '1rem 1rem 1rem 0.25rem',
               background: msg.role === 'user'
                 ? 'var(--color-primary-600)'
-                : 'var(--color-dark-800)',
+                : '#f1f5f9',
               border: msg.role === 'user'
                 ? 'none'
-                : '1px solid rgba(148, 163, 184, 0.1)',
-              fontSize: '0.8125rem',
+                : '1px solid #e2e8f0',
+              fontSize: '0.75rem',
               lineHeight: 1.6,
-              color: 'var(--color-text-primary)',
+              color: msg.role === 'user' ? 'white' : 'var(--color-text-primary)',
             }}>
               {msg.role === 'assistant' ? (
-                <div style={{ fontSize: '0.8125rem' }} className="chat-markdown">
+                <div style={{ fontSize: '0.75rem' }} className="chat-markdown">
                   <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
               ) : (
@@ -210,7 +209,7 @@ const ChatWidget: React.FC = () => {
               {[0, 1, 2].map((i) => (
                 <div key={i} style={{
                   width: '6px', height: '6px', borderRadius: '50%',
-                  background: 'var(--color-primary-400)',
+                  background: 'var(--color-primary-600)',
                   animation: `float 1s ease-in-out ${i * 0.2}s infinite`,
                 }} />
               ))}
@@ -224,7 +223,7 @@ const ChatWidget: React.FC = () => {
       {/* Input */}
       <div style={{
         padding: '0.75rem 1rem',
-        borderTop: '1px solid rgba(148, 163, 184, 0.1)',
+        borderTop: '1px solid #e2e8f0',
         display: 'flex',
         gap: '0.5rem',
       }}>
@@ -237,10 +236,10 @@ const ChatWidget: React.FC = () => {
           style={{
             flex: 1,
             padding: '0.625rem 0.875rem',
-            background: 'var(--color-dark-800)',
-            border: '1px solid rgba(148, 163, 184, 0.1)',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
             borderRadius: 'var(--radius-lg)',
-            color: 'white',
+            color: 'var(--color-text-primary)',
             fontSize: '0.8125rem',
             fontFamily: 'inherit',
             outline: 'none',
@@ -251,7 +250,7 @@ const ChatWidget: React.FC = () => {
           disabled={!input.trim() || isLoading}
           style={{
             padding: '0.625rem',
-            background: input.trim() ? 'var(--color-primary-600)' : 'var(--color-dark-700)',
+            background: input.trim() ? 'var(--color-primary-600)' : '#e2e8f0',
             border: 'none',
             borderRadius: 'var(--radius-lg)',
             cursor: input.trim() ? 'pointer' : 'default',
@@ -268,7 +267,7 @@ const ChatWidget: React.FC = () => {
       <style>{`
         .chat-markdown p { margin-bottom: 0.5rem; }
         .chat-markdown p:last-child { margin-bottom: 0; }
-        .chat-markdown strong { color: var(--color-primary-300); }
+        .chat-markdown strong { color: var(--color-primary-600); }
         .chat-markdown ul, .chat-markdown ol { padding-left: 1.25rem; margin-bottom: 0.5rem; }
         .chat-markdown li { margin-bottom: 0.25rem; }
       `}</style>

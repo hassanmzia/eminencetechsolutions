@@ -7,7 +7,7 @@ import { Trophy, ArrowRight, TrendingUp, CheckCircle } from 'lucide-react';
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${delay}ms` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -39,7 +39,7 @@ const caseStudies = [
 
 const CaseStudies: React.FC = () => (
   <div style={{ paddingTop: '6rem' }}>
-    <section className="section" style={{ background: 'var(--gradient-hero)' }}>
+    <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
       <div className="container">
         <AnimatedSection>
           <div style={{ maxWidth: '700px' }}>
@@ -64,20 +64,20 @@ const CaseStudies: React.FC = () => (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
                   <div>
                     <span className="badge" style={{ marginBottom: '0.75rem' }}>{cs.industry}</span>
-                    <h2 style={{ color: 'white', fontSize: '1.5rem', lineHeight: 1.3 }}>{cs.title}</h2>
+                    <h2 style={{ color: 'var(--color-text-primary)', fontSize: '1.5rem', lineHeight: 1.3 }}>{cs.title}</h2>
                   </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '1.5rem' }}>
                   <div>
-                    <h4 style={{ color: 'var(--color-primary-400)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Challenge</h4>
+                    <h4 style={{ color: 'var(--color-primary-600)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Challenge</h4>
                     <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{cs.challenge}</p>
                   </div>
                   <div>
-                    <h4 style={{ color: 'var(--color-primary-400)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Solution</h4>
+                    <h4 style={{ color: 'var(--color-primary-600)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Solution</h4>
                     <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{cs.solution}</p>
                   </div>
                   <div>
-                    <h4 style={{ color: 'var(--color-success-500)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Results</h4>
+                    <h4 style={{ color: 'var(--color-success-600)', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Results</h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                       {cs.results.map(r => (
                         <div key={r} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9375rem', color: 'var(--color-text-secondary)' }}>
@@ -97,8 +97,8 @@ const CaseStudies: React.FC = () => (
 
         <AnimatedSection>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <div className="card" style={{ display: 'inline-block', maxWidth: '500px', textAlign: 'center' }}>
-              <h3 style={{ color: 'white', marginBottom: '0.75rem' }}>Have a Similar Challenge?</h3>
+            <div className="card" style={{ display: 'inline-block', maxWidth: '500px', textAlign: 'center', background: 'white' }}>
+              <h3 style={{ color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>Have a Similar Challenge?</h3>
               <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem', fontSize: '0.9375rem' }}>
                 Let us show you how our expertise can deliver results for your organization.
               </p>

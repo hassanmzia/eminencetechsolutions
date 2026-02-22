@@ -95,7 +95,7 @@ const allServices = [
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${delay}ms` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -103,14 +103,14 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
 
 const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }) => (
   <div style={{ paddingTop: '6rem' }}>
-    <section className="section">
+    <section className="section" style={{ background: 'white' }}>
       <div className="container">
         <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem', marginBottom: '2rem', textDecoration: 'none' }}>
           <ArrowLeft size={16} /> Back to All Services
         </Link>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem', alignItems: 'start' }}>
           <div>
-            <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-400)', marginBottom: '1.5rem' }}>
+            <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', marginBottom: '1.5rem' }}>
               {iconMap[service.icon]}
             </div>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1rem' }}>{service.title}</h1>
@@ -124,7 +124,7 @@ const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }
           </div>
           <div>
             <div className="card" style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem', color: 'white' }}>Key Capabilities</h3>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-primary)' }}>Key Capabilities</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {service.features.map((f) => (
                   <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.9375rem', color: 'var(--color-text-secondary)' }}>
@@ -134,7 +134,7 @@ const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }
               </div>
             </div>
             <div className="card">
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem', color: 'white' }}>Technologies</h3>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-primary)' }}>Technologies</h3>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {service.technologies.map((t) => (
                   <span key={t} className="badge">{t}</span>
@@ -145,7 +145,7 @@ const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }
         </div>
       </div>
     </section>
-    <section className="section" style={{ background: 'var(--color-dark-900)' }}>
+    <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
       <div className="container" style={{ textAlign: 'center' }}>
         <h2 style={{ marginBottom: '1rem' }}>Ready to Get Started?</h2>
         <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
@@ -182,11 +182,11 @@ const Services: React.FC = () => {
                 <Link to={`/services/${service.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
                   <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
                     <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'start' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-400)', flexShrink: 0 }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', flexShrink: 0 }}>
                         {iconMap[service.icon]}
                       </div>
                       <div>
-                        <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem' }}>{service.title}</h3>
+                        <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>{service.title}</h3>
                         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>{service.short_description}</p>
                         <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
                           {service.technologies.slice(0, 4).map((t) => (

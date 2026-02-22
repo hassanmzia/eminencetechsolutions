@@ -8,7 +8,7 @@ import {
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${delay}ms` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -57,7 +57,7 @@ const Careers: React.FC = () => {
   return (
     <div style={{ paddingTop: '6rem' }}>
       {/* Hero */}
-      <section className="section" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
           <AnimatedSection>
             <div style={{ maxWidth: '700px' }}>
@@ -74,7 +74,7 @@ const Careers: React.FC = () => {
       </section>
 
       {/* Benefits */}
-      <section className="section" style={{ background: 'var(--color-dark-900)' }}>
+      <section className="section" style={{ background: 'white' }}>
         <div className="container">
           <AnimatedSection>
             <div className="section-header">
@@ -90,8 +90,8 @@ const Careers: React.FC = () => {
             ].map((b, i) => (
               <AnimatedSection key={b.title} delay={i * 100}>
                 <div className="card" style={{ textAlign: 'center', height: '100%' }}>
-                  <div style={{ color: 'var(--color-primary-400)', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>{b.icon}</div>
-                  <h4 style={{ color: 'white', marginBottom: '0.5rem', fontSize: '1rem' }}>{b.title}</h4>
+                  <div style={{ color: 'var(--color-primary-600)', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>{b.icon}</div>
+                  <h4 style={{ color: 'var(--color-text-primary)', marginBottom: '0.5rem', fontSize: '1rem' }}>{b.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{b.desc}</p>
                 </div>
               </AnimatedSection>
@@ -116,7 +116,7 @@ const Careers: React.FC = () => {
                 <div className="card" style={{ cursor: 'pointer' }}>
                   <div onClick={() => setExpandedJob(expandedJob === job.slug ? null : job.slug)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
                     <div>
-                      <h3 style={{ color: 'white', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{job.title}</h3>
+                      <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{job.title}</h3>
                       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Briefcase size={13} /> {job.department}</span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><MapPin size={13} /> {job.locationType}</span>
@@ -128,10 +128,10 @@ const Careers: React.FC = () => {
                   </div>
 
                   {expandedJob === job.slug && (
-                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(148,163,184,0.1)' }}>
+                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0' }}>
                       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.25rem' }}>{job.description}</p>
 
-                      <h4 style={{ color: 'white', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Requirements</h4>
+                      <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Requirements</h4>
                       <ul style={{ listStyle: 'none', marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                         {job.requirements.map(r => (
                           <li key={r} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
@@ -140,7 +140,7 @@ const Careers: React.FC = () => {
                         ))}
                       </ul>
 
-                      <h4 style={{ color: 'white', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Skills</h4>
+                      <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Skills</h4>
                       <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
                         {job.skills.map(s => <span key={s} className="badge">{s}</span>)}
                       </div>
@@ -149,7 +149,7 @@ const Careers: React.FC = () => {
                         submitted ? (
                           <div style={{ textAlign: 'center', padding: '2rem' }}>
                             <CheckCircle size={48} style={{ color: 'var(--color-success-500)', marginBottom: '1rem' }} />
-                            <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Application Submitted!</h3>
+                            <h3 style={{ color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>Application Submitted!</h3>
                             <p style={{ color: 'var(--color-text-muted)' }}>We will review your application and get back to you.</p>
                           </div>
                         ) : (
