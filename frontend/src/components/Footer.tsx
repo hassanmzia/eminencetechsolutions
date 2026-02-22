@@ -41,8 +41,8 @@ const Footer: React.FC = () => {
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem' }}>
                 <MapPin size={14} /> 44330 Mercure Circle, Sterling, VA
               </span>
-              <a href="tel:+17035551234" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none' }}>
-                <Phone size={14} /> (703) 555-1234
+              <a href="tel:+17036653988" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.8125rem', textDecoration: 'none' }}>
+                <Phone size={14} /> (703) 665-3988
               </a>
             </div>
           </div>
