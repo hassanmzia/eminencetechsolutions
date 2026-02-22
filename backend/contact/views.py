@@ -1,8 +1,14 @@
+import logging
+
+from django.conf import settings
+from django.core.mail import send_mail
 from rest_framework import viewsets, mixins, status
 from rest_framework.response import Response
 
 from .models import ContactMessage, NewsletterSubscriber
 from .serializers import ContactMessageSerializer, NewsletterSubscriberSerializer
+
+logger = logging.getLogger(__name__)
 
 
 class ContactMessageViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
@@ -13,6 +19,28 @@ class ContactMessageViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         msg = serializer.save()
+
+        # Send email notification to admin
+        try:
+            send_mail(
+                subject=f'[ETS Contact] {msg.subject}',
+                message=(
+                    f'New contact message received:\n\n'
+                    f'Name: {msg.name}\n'
+                    f'Email: {msg.email}\n'
+                    f'Phone: {msg.phone or "N/A"}\n'
+                    f'Company: {msg.company or "N/A"}\n'
+                    f'Inquiry Type: {msg.inquiry_type}\n\n'
+                    f'Subject: {msg.subject}\n\n'
+                    f'Message:\n{msg.message}'
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.ADMIN_EMAIL],
+                fail_silently=True,
+            )
+        except Exception:
+            logger.exception('Failed to send contact notification email')
+
         return Response(
             {
                 'message': 'Thank you for reaching out! We will get back to you within 24 hours.',

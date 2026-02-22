@@ -105,7 +105,7 @@ const Home: React.FC = () => {
         background: 'var(--color-bg-secondary)',
       }}>
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '3rem', paddingBottom: '4rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+          <div className="hero-grid">
             <div>
               <AnimatedSection>
                 <div className="section-label" style={{ marginBottom: '1.5rem' }}>
@@ -177,7 +177,7 @@ const Home: React.FC = () => {
                   alt="Team collaborating on AI solutions"
                   className="hero-side-img"
                 />
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="sub-image-grid">
                   <img
                     src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80"
                     alt="Digital technology visualization"
@@ -262,7 +262,7 @@ const Home: React.FC = () => {
       {/* Why Choose Us */}
       <section className="section" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+          <div className="content-grid">
             <AnimatedSection>
               <div>
                 <span className="section-label"><Star size={14} /> Why Eminence</span>
@@ -304,7 +304,7 @@ const Home: React.FC = () => {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-text-primary)' }}>
                   Our Technology Expertise
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <div className="tech-grid">
                   {[
                     { cat: 'AI/ML', items: ['LangChain', 'AutoGen', 'CrewAI', 'PyTorch', 'Hugging Face'] },
                     { cat: 'Protocols', items: ['MCP', 'A2A', 'OpenAI API', 'Claude API'] },

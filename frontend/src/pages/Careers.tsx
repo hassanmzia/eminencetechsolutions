@@ -167,7 +167,7 @@ const Careers: React.FC = () => {
                             <p style={{ color: 'var(--color-text-muted)' }}>We will review your application and get back to you.</p>
                           </div>
                         ) : (
-                          <form onSubmit={handleApply} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                          <form onSubmit={handleApply} className="form-grid">
                             <div className="form-group">
                               <label className="form-label">First Name *</label>
                               <input className="form-input" required placeholder="John" />
@@ -184,19 +184,19 @@ const Careers: React.FC = () => {
                               <label className="form-label">Phone *</label>
                               <input className="form-input" required placeholder="(555) 123-4567" />
                             </div>
-                            <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                            <div className="form-group form-span-full">
                               <label className="form-label">LinkedIn URL</label>
                               <input className="form-input" placeholder="https://linkedin.com/in/..." />
                             </div>
-                            <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                            <div className="form-group form-span-full">
                               <label className="form-label">Resume * (PDF or Word, max 10MB)</label>
                               <input type="file" accept=".pdf,.doc,.docx" required className="form-input" style={{ padding: '0.5rem' }} />
                             </div>
-                            <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                            <div className="form-group form-span-full">
                               <label className="form-label">Cover Letter</label>
                               <textarea className="form-textarea" rows={4} placeholder="Tell us why you'd be a great fit..." />
                             </div>
-                            <div style={{ gridColumn: 'span 2' }}>
+                            <div className="form-span-full">
                               <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
                                 Submit Application <ArrowRight size={16} />
                               </button>

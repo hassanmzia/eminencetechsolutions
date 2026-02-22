@@ -145,7 +145,7 @@ const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }
             className="section-banner-img"
           />
         )}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+        <div className="content-grid" style={{ alignItems: 'start' }}>
           <div>
             <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', marginBottom: '1.5rem' }}>
               {iconMap[service.icon]}
