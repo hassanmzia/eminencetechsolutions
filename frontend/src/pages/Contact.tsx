@@ -46,8 +46,15 @@ const Contact: React.FC = () => {
       await submitContactMessage(cleanForm as any);
       setSubmitted(true);
     } catch (err: any) {
+      console.error('Contact form error:', err.response?.status, err.response?.data);
       const data = err.response?.data;
-      if (data && typeof data === 'object' && !data.detail) {
+      if (!data) {
+        setError('Network error. Please check your connection and try again.');
+      } else if (typeof data === 'string') {
+        setError('Server error. Please try again or contact us directly.');
+      } else if (data.detail) {
+        setError(data.detail);
+      } else if (typeof data === 'object') {
         const messages = Object.entries(data)
           .map(([field, errors]) => {
             const label = field.replace(/_/g, ' ');
@@ -57,7 +64,7 @@ const Contact: React.FC = () => {
           .join('; ');
         setError(messages || 'Validation failed. Please check your inputs.');
       } else {
-        setError(data?.detail || 'Something went wrong. Please try again.');
+        setError('Something went wrong. Please try again.');
       }
     } finally {
       setLoading(false);
