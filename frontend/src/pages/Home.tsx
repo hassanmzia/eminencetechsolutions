@@ -74,9 +74,12 @@ const Home: React.FC = () => {
       {/* Banner Image */}
       <section style={{ background: 'var(--color-bg-secondary)', paddingTop: '5rem' }}>
         <div className="container">
+          {/* Saved images:
+            - Corporate AI Strategy Team: https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&h=400&q=80
+          */}
           <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&h=400&q=80"
-            alt="Corporate AI strategy team"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&h=400&q=80"
+            alt="Corporate AI migration - modern enterprise building"
             className="section-banner-img"
             style={{ height: '220px', marginBottom: 0 }}
           />
