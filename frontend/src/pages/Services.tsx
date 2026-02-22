@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import {
   Brain, Sparkles, Network, TrendingUp, GitBranch, Cloud,
-  Shield, Scale, Database, GraduationCap, ArrowRight, CheckCircle, ArrowLeft,
+  Shield, Scale, Database, GraduationCap, ArrowRight, CheckCircle, ArrowLeft, Wifi,
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -17,6 +17,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Scale: <Scale size={32} />,
   Database: <Database size={32} />,
   GraduationCap: <GraduationCap size={32} />,
+  Wifi: <Wifi size={32} />,
 };
 
 const serviceImages: Record<string, string> = {
@@ -30,6 +31,8 @@ const serviceImages: Record<string, string> = {
   'ai-governance-ethics': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
   'data-engineering-analytics': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
   'training-education': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80',
+  'data-engineering-data-science': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+  'iot-device-integration': 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
 };
 
 const allServices = [
@@ -95,6 +98,20 @@ const allServices = [
     full_description: 'Data is the foundation of every successful AI initiative. Our Data Engineering & Analytics practice designs and implements scalable data architectures, ETL/ELT pipelines, data lakes, and analytics platforms that transform raw data into actionable intelligence.',
     features: ['Data pipeline architecture', 'Data lake implementation', 'Real-time analytics', 'Data quality management', 'Business intelligence', 'Data governance'],
     technologies: ['Apache Kafka', 'Apache Spark', 'Snowflake', 'dbt', 'Airflow', 'PowerBI', 'Tableau'],
+  },
+  {
+    title: 'Data Engineering & Data Science', slug: 'data-engineering-data-science', icon: 'Database',
+    short_description: 'Scalable data pipelines, data lakes, advanced analytics, and machine learning to turn raw data into actionable insights.',
+    full_description: 'Data is the lifeblood of modern AI and business intelligence. Our Data Engineering & Data Science practice designs and builds robust data architectures, ETL/ELT pipelines, data lakes, and advanced analytics platforms. We combine data engineering best practices with cutting-edge data science techniques including statistical modeling, machine learning, and deep learning to extract maximum value from your data assets.',
+    features: ['Data pipeline architecture', 'Data lake and warehouse design', 'Machine learning model development', 'Advanced analytics and visualization', 'Real-time streaming analytics', 'Data quality and governance'],
+    technologies: ['Apache Spark', 'Snowflake', 'dbt', 'Python', 'Airflow', 'Kafka', 'PowerBI', 'Tableau'],
+  },
+  {
+    title: 'IoT Device Integration', slug: 'iot-device-integration', icon: 'Wifi',
+    short_description: 'End-to-end IoT solutions connecting devices, sensors, and edge computing to enterprise AI and cloud platforms.',
+    full_description: 'Bridge the physical and digital worlds with our IoT Device Integration practice. We design and implement end-to-end IoT architectures that connect sensors, devices, and edge computing nodes to enterprise cloud platforms and AI systems. From device provisioning and management to real-time data ingestion, edge AI processing, and predictive maintenance, we deliver IoT solutions that drive operational efficiency and unlock new business capabilities.',
+    features: ['Device provisioning and management', 'Edge computing and Edge AI', 'Real-time data ingestion', 'Predictive maintenance', 'Digital twin implementation', 'IoT security and compliance'],
+    technologies: ['MQTT', 'AWS IoT Core', 'Azure IoT Hub', 'Edge AI', 'Raspberry Pi', 'Arduino', 'LoRaWAN'],
   },
   {
     title: 'Training & Education', slug: 'training-education', icon: 'GraduationCap',
