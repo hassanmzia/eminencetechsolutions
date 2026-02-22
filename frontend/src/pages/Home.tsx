@@ -105,7 +105,7 @@ const Home: React.FC = () => {
 
               <AnimatedSection delay={100}>
                 <div style={{
-                  fontSize: 'clamp(1rem, 2vw, 1.75rem)',
+                  fontSize: 'clamp(0.85rem, 1.6vw, 1.4rem)',
                   fontWeight: 700,
                   letterSpacing: '0.2em',
                   color: 'var(--color-primary-600)',
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
                 }}>
                   WE MAKE IT HAPPEN
                 </div>
-                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1rem, 2vw, 1.5rem)', fontWeight: 700, lineHeight: 1.2 }}>
+                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(0.9rem, 1.6vw, 1.25rem)', fontWeight: 700, lineHeight: 1.2 }}>
                   Pioneering{' '}
                   <span className="gradient-text">AI Innovation</span>
                   {' '}for Enterprise Transformation
