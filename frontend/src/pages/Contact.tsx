@@ -128,8 +128,8 @@ const Contact: React.FC = () => {
             <AnimatedSection delay={200}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1600880292089-7d0b1fbd3827?auto=format&fit=crop&w=600&q=80"
-                  alt="Customer support team ready to help"
+                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
+                  alt="Team collaborating in a meeting"
                   style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: 'var(--radius-xl)' }}
                 />
                 <h2 style={{ color: 'var(--color-text-primary)', fontSize: '1.5rem' }}>Get in Touch</h2>
