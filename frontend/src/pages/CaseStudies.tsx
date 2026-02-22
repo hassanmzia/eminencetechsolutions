@@ -20,6 +20,7 @@ const caseStudies = [
     solution: 'Deployed an agentic AI system using multi-agent architecture with MCP integration for document classification, extraction, validation, and compliance checking.',
     results: ['60% reduction in processing time', '95% accuracy in data extraction', 'Full ATO compliance', '$2.5M annual cost savings'],
     techs: ['Agentic AI', 'Multi-Agent Systems', 'RAG', 'MCP', 'Kubernetes', 'FedRAMP'],
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
   },
   {
     title: 'Enterprise AI Transformation for Healthcare Provider', industry: 'Healthcare',
@@ -27,6 +28,7 @@ const caseStudies = [
     solution: 'Delivered comprehensive AI transformation including readiness assessment, roadmap development, multi-agent system, and AI governance framework.',
     results: ['3x faster research data processing', 'AI governance across 15 departments', '40% improvement in insights', 'HIPAA-compliant AI deployment'],
     techs: ['AI Transformation', 'Multi-Agent AI', 'AI Governance', 'HIPAA', 'Kubernetes', 'RAG'],
+    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
   },
   {
     title: 'Multi-Cloud DevSecOps & MLOps for Defense Contractor', industry: 'Defense',
@@ -34,6 +36,7 @@ const caseStudies = [
     solution: 'Implemented DevSecOps and MLOps transformation including Kubernetes migration, automated security scanning, and ML CI/CD pipelines.',
     results: ['10x faster ML model deployment', 'ATO achieved in record time', '75% fewer deployment incidents', 'Unified multi-cloud infrastructure'],
     techs: ['DevSecOps', 'MLOps', 'Kubernetes', 'ATO', 'AWS GovCloud', 'Azure GovCloud'],
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
@@ -41,17 +44,26 @@ const CaseStudies: React.FC = () => (
   <div style={{ paddingTop: '6rem' }}>
     <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
       <div className="container">
-        <AnimatedSection>
-          <div style={{ maxWidth: '700px' }}>
-            <span className="section-label"><Trophy size={14} /> Case Studies</span>
-            <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
-              Proven Results Across <span className="gradient-text">Industries</span>
-            </h1>
-            <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-              Explore how we have helped organizations achieve measurable business outcomes through AI innovation, cloud modernization, and security excellence.
-            </p>
-          </div>
-        </AnimatedSection>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <AnimatedSection>
+            <div>
+              <span className="section-label"><Trophy size={14} /> Case Studies</span>
+              <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
+                Proven Results Across <span className="gradient-text">Industries</span>
+              </h1>
+              <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+                Explore how we have helped organizations achieve measurable business outcomes through AI innovation, cloud modernization, and security excellence.
+              </p>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={200}>
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80"
+              alt="Business analytics and results"
+              className="hero-side-img"
+            />
+          </AnimatedSection>
+        </div>
       </div>
     </section>
 
@@ -60,7 +72,9 @@ const CaseStudies: React.FC = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {caseStudies.map((cs, idx) => (
             <AnimatedSection key={cs.title} delay={idx * 100}>
-              <div className="card">
+              <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+                <img src={cs.img} alt={cs.title} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                <div style={{ padding: '1.75rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
                   <div>
                     <span className="badge" style={{ marginBottom: '0.75rem' }}>{cs.industry}</span>
@@ -89,6 +103,7 @@ const CaseStudies: React.FC = () => (
                 </div>
                 <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
                   {cs.techs.map(t => <span key={t} className="badge" style={{ fontSize: '0.6875rem' }}>{t}</span>)}
+                </div>
                 </div>
               </div>
             </AnimatedSection>

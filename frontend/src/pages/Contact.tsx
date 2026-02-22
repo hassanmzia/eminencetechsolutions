@@ -41,17 +41,26 @@ const Contact: React.FC = () => {
     <div style={{ paddingTop: '6rem' }}>
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
-          <AnimatedSection>
-            <div style={{ maxWidth: '700px' }}>
-              <span className="section-label"><Mail size={14} /> Contact Us</span>
-              <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
-                Let's Start a <span className="gradient-text">Conversation</span>
-              </h1>
-              <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-                Whether you have a question about our services, need technical support, or want to explore a partnership, we're here to help.
-              </p>
-            </div>
-          </AnimatedSection>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            <AnimatedSection>
+              <div>
+                <span className="section-label"><Mail size={14} /> Contact Us</span>
+                <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
+                  Let's Start a <span className="gradient-text">Conversation</span>
+                </h1>
+                <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+                  Whether you have a question about our services, need technical support, or want to explore a partnership, we're here to help.
+                </p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={200}>
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=80"
+                alt="Modern professional office"
+                className="hero-side-img"
+              />
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -118,6 +127,11 @@ const Contact: React.FC = () => {
             {/* Contact Info */}
             <AnimatedSection delay={200}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80"
+                  alt="Professional handshake"
+                  style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: 'var(--radius-xl)' }}
+                />
                 <h2 style={{ color: 'var(--color-text-primary)', fontSize: '1.5rem' }}>Get in Touch</h2>
                 <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
                   Our team is ready to help you navigate your AI transformation journey. Reach out through any of the channels below.

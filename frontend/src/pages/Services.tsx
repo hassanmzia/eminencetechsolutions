@@ -19,6 +19,19 @@ const iconMap: Record<string, React.ReactNode> = {
   GraduationCap: <GraduationCap size={32} />,
 };
 
+const serviceImages: Record<string, string> = {
+  'agentic-ai-systems': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80',
+  'generative-ai-solutions': 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80',
+  'multi-agent-ai-systems': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+  'ai-transformation-strategy': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80',
+  'devsecops-mlops': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80',
+  'cloud-kubernetes': 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+  'cybersecurity-compliance': 'https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80',
+  'ai-governance-ethics': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
+  'data-engineering-analytics': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+  'training-education': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80',
+};
+
 const allServices = [
   {
     title: 'Agentic AI Systems', slug: 'agentic-ai-systems', icon: 'Brain',
@@ -108,6 +121,13 @@ const ServiceDetail: React.FC<{ service: typeof allServices[0] }> = ({ service }
         <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.875rem', marginBottom: '2rem', textDecoration: 'none' }}>
           <ArrowLeft size={16} /> Back to All Services
         </Link>
+        {serviceImages[service.slug] && (
+          <img
+            src={serviceImages[service.slug]}
+            alt={service.title}
+            className="section-banner-img"
+          />
+        )}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem', alignItems: 'start' }}>
           <div>
             <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', marginBottom: '1.5rem' }}>
@@ -180,18 +200,23 @@ const Services: React.FC = () => {
             {allServices.map((service, idx) => (
               <AnimatedSection key={service.slug} delay={idx * 75}>
                 <Link to={`/services/${service.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-                  <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
-                    <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'start' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', flexShrink: 0 }}>
-                        {iconMap[service.icon]}
-                      </div>
-                      <div>
-                        <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>{service.title}</h3>
-                        <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>{service.short_description}</p>
-                        <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                          {service.technologies.slice(0, 4).map((t) => (
-                            <span key={t} className="badge" style={{ fontSize: '0.6875rem' }}>{t}</span>
-                          ))}
+                  <div className="card" style={{ height: '100%', cursor: 'pointer', padding: 0, overflow: 'hidden' }}>
+                    {serviceImages[service.slug] && (
+                      <img src={serviceImages[service.slug]} alt={service.title} className="card-img" style={{ borderRadius: 0, marginBottom: 0, height: '140px' }} />
+                    )}
+                    <div style={{ padding: '1.5rem' }}>
+                      <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'start' }}>
+                        <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-50)', border: '1px solid var(--color-primary-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary-600)', flexShrink: 0 }}>
+                          {iconMap[service.icon]}
+                        </div>
+                        <div>
+                          <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>{service.title}</h3>
+                          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>{service.short_description}</p>
+                          <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
+                            {service.technologies.slice(0, 4).map((t) => (
+                              <span key={t} className="badge" style={{ fontSize: '0.6875rem' }}>{t}</span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>

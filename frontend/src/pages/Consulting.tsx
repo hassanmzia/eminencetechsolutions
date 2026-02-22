@@ -75,17 +75,26 @@ const Consulting: React.FC = () => {
       {/* Hero */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container">
-          <AnimatedSection>
-            <div style={{ maxWidth: '700px' }}>
-              <span className="section-label"><Rocket size={14} /> Start a Project</span>
-              <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
-                Begin Your <span className="gradient-text">AI Transformation</span>
-              </h1>
-              <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-                Tell us about your project and our team of AI experts will craft a tailored solution. From initial assessment to full deployment, we are your trusted partner.
-              </p>
-            </div>
-          </AnimatedSection>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            <AnimatedSection>
+              <div>
+                <span className="section-label"><Rocket size={14} /> Start a Project</span>
+                <h1 style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
+                  Begin Your <span className="gradient-text">AI Transformation</span>
+                </h1>
+                <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+                  Tell us about your project and our team of AI experts will craft a tailored solution. From initial assessment to full deployment, we are your trusted partner.
+                </p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={200}>
+              <img
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80"
+                alt="Consulting meeting with team"
+                className="hero-side-img"
+              />
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 

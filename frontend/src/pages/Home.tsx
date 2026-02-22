@@ -31,14 +31,14 @@ const metricIcons: Record<string, React.ReactNode> = {
 };
 
 const services = [
-  { title: 'Agentic AI Systems', slug: 'agentic-ai-systems', icon: 'Brain', desc: 'Autonomous AI agents that reason, plan, and execute complex enterprise tasks with human oversight.', techs: ['LangChain', 'MCP', 'A2A'] },
-  { title: 'Generative AI Solutions', slug: 'generative-ai-solutions', icon: 'Sparkles', desc: 'Custom LLM applications, RAG pipelines, and enterprise generative AI tailored to your data.', techs: ['GPT-4', 'Claude', 'RAG'] },
-  { title: 'Multi-Agent Systems', slug: 'multi-agent-ai-systems', icon: 'Network', desc: 'Collaborative multi-agent architectures using MCP and A2A protocols for complex workflows.', techs: ['MCP', 'A2A', 'AutoGen'] },
-  { title: 'AI Transformation', slug: 'ai-transformation-strategy', icon: 'TrendingUp', desc: 'End-to-end strategy with roadmaps, blueprints, and organizational change management.', techs: ['Strategy', 'Roadmap', 'ROI'] },
-  { title: 'DevSecOps & MLOps', slug: 'devsecops-mlops', icon: 'GitBranch', desc: 'Secure CI/CD pipelines, ML lifecycle management, and automated deployment workflows.', techs: ['ArgoCD', 'MLflow', 'Terraform'] },
-  { title: 'Cloud & Kubernetes', slug: 'cloud-kubernetes', icon: 'Cloud', desc: 'Multi-cloud architecture, Kubernetes/OpenShift orchestration across AWS, Azure, GCP.', techs: ['K8s', 'OpenShift', 'Docker'] },
-  { title: 'Cybersecurity & ATO', slug: 'cybersecurity-compliance', icon: 'Shield', desc: 'Comprehensive security services including ATO support and compliance frameworks.', techs: ['FedRAMP', 'NIST', 'SOC 2'] },
-  { title: 'AI Governance', slug: 'ai-governance-ethics', icon: 'Scale', desc: 'Ethical AI frameworks, regulatory compliance, guardrails, and governance structures.', techs: ['EU AI Act', 'NIST RMF', 'Ethics'] },
+  { title: 'Agentic AI Systems', slug: 'agentic-ai-systems', icon: 'Brain', desc: 'Autonomous AI agents that reason, plan, and execute complex enterprise tasks with human oversight.', techs: ['LangChain', 'MCP', 'A2A'], img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80' },
+  { title: 'Generative AI Solutions', slug: 'generative-ai-solutions', icon: 'Sparkles', desc: 'Custom LLM applications, RAG pipelines, and enterprise generative AI tailored to your data.', techs: ['GPT-4', 'Claude', 'RAG'], img: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80' },
+  { title: 'Multi-Agent Systems', slug: 'multi-agent-ai-systems', icon: 'Network', desc: 'Collaborative multi-agent architectures using MCP and A2A protocols for complex workflows.', techs: ['MCP', 'A2A', 'AutoGen'], img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80' },
+  { title: 'AI Transformation', slug: 'ai-transformation-strategy', icon: 'TrendingUp', desc: 'End-to-end strategy with roadmaps, blueprints, and organizational change management.', techs: ['Strategy', 'Roadmap', 'ROI'], img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80' },
+  { title: 'DevSecOps & MLOps', slug: 'devsecops-mlops', icon: 'GitBranch', desc: 'Secure CI/CD pipelines, ML lifecycle management, and automated deployment workflows.', techs: ['ArgoCD', 'MLflow', 'Terraform'], img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80' },
+  { title: 'Cloud & Kubernetes', slug: 'cloud-kubernetes', icon: 'Cloud', desc: 'Multi-cloud architecture, Kubernetes/OpenShift orchestration across AWS, Azure, GCP.', techs: ['K8s', 'OpenShift', 'Docker'], img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80' },
+  { title: 'Cybersecurity & ATO', slug: 'cybersecurity-compliance', icon: 'Shield', desc: 'Comprehensive security services including ATO support and compliance frameworks.', techs: ['FedRAMP', 'NIST', 'SOC 2'], img: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80' },
+  { title: 'AI Governance', slug: 'ai-governance-ethics', icon: 'Scale', desc: 'Ethical AI frameworks, regulatory compliance, guardrails, and governance structures.', techs: ['EU AI Act', 'NIST RMF', 'Ethics'], img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80' },
 ];
 
 const metrics = [
@@ -78,66 +78,90 @@ const Home: React.FC = () => {
         background: 'var(--color-bg-secondary)',
       }}>
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '6rem', paddingBottom: '4rem' }}>
-          <div style={{ maxWidth: '800px' }}>
-            <AnimatedSection>
-              <div className="section-label" style={{ marginBottom: '1.5rem' }}>
-                <Zap size={14} /> AI-First Consulting
-              </div>
-            </AnimatedSection>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+            <div>
+              <AnimatedSection>
+                <div className="section-label" style={{ marginBottom: '1.5rem' }}>
+                  <Zap size={14} /> AI-First Consulting
+                </div>
+              </AnimatedSection>
 
-            <AnimatedSection delay={100}>
-              <div style={{
-                fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
-                fontWeight: 600,
-                letterSpacing: '0.2em',
-                color: 'var(--color-primary-600)',
-                marginBottom: '1rem',
-                textTransform: 'uppercase',
-              }}>
-                WE MAKE IT HAPPEN
-              </div>
-              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2 }}>
-                Pioneering{' '}
-                <span className="gradient-text">AI Innovation</span>
-                {' '}for Enterprise Transformation
-              </h1>
-            </AnimatedSection>
+              <AnimatedSection delay={100}>
+                <div style={{
+                  fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                  fontWeight: 600,
+                  letterSpacing: '0.2em',
+                  color: 'var(--color-primary-600)',
+                  marginBottom: '1rem',
+                  textTransform: 'uppercase',
+                }}>
+                  WE MAKE IT HAPPEN
+                </div>
+                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2 }}>
+                  Pioneering{' '}
+                  <span className="gradient-text">AI Innovation</span>
+                  {' '}for Enterprise Transformation
+                </h1>
+              </AnimatedSection>
 
-            <AnimatedSection delay={200}>
-              <p style={{ fontSize: '1rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', maxWidth: '640px', lineHeight: 1.7 }}>
-                Expert consulting in Agentic AI, Multi-Agent Systems, Generative AI,
-                DevSecOps, Cloud Architecture, and Cybersecurity. We architect, build, and
-                deploy intelligent systems that transform how enterprises operate.
-              </p>
-            </AnimatedSection>
+              <AnimatedSection delay={200}>
+                <p style={{ fontSize: '1rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', maxWidth: '640px', lineHeight: 1.7 }}>
+                  Expert consulting in Agentic AI, Multi-Agent Systems, Generative AI,
+                  DevSecOps, Cloud Architecture, and Cybersecurity. We architect, build, and
+                  deploy intelligent systems that transform how enterprises operate.
+                </p>
+              </AnimatedSection>
+
+              <AnimatedSection delay={300}>
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                  <Link to="/consulting" className="btn btn-primary btn-lg">
+                    Start Your AI Journey <ArrowRight size={18} />
+                  </Link>
+                  <Link to="/services" className="btn btn-secondary btn-lg">
+                    Explore Services
+                  </Link>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={400}>
+                <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+                  {[
+                    { icon: <Cpu size={16} />, label: 'MCP & A2A Protocols' },
+                    { icon: <Globe size={16} />, label: 'Multi-Cloud Expert' },
+                    { icon: <Lock size={16} />, label: 'ATO & FedRAMP' },
+                    { icon: <BarChart3 size={16} />, label: 'AI Governance' },
+                  ].map((item) => (
+                    <div key={item.label} style={{
+                      display: 'flex', alignItems: 'center', gap: '0.5rem',
+                      color: 'var(--color-text-muted)', fontSize: '0.875rem',
+                    }}>
+                      <span style={{ color: 'var(--color-primary-600)' }}>{item.icon}</span>
+                      {item.label}
+                    </div>
+                  ))}
+                </div>
+              </AnimatedSection>
+            </div>
 
             <AnimatedSection delay={300}>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link to="/consulting" className="btn btn-primary btn-lg">
-                  Start Your AI Journey <ArrowRight size={18} />
-                </Link>
-                <Link to="/services" className="btn btn-secondary btn-lg">
-                  Explore Services
-                </Link>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={400}>
-              <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap' }}>
-                {[
-                  { icon: <Cpu size={16} />, label: 'MCP & A2A Protocols' },
-                  { icon: <Globe size={16} />, label: 'Multi-Cloud Expert' },
-                  { icon: <Lock size={16} />, label: 'ATO & FedRAMP' },
-                  { icon: <BarChart3 size={16} />, label: 'AI Governance' },
-                ].map((item) => (
-                  <div key={item.label} style={{
-                    display: 'flex', alignItems: 'center', gap: '0.5rem',
-                    color: 'var(--color-text-muted)', fontSize: '0.875rem',
-                  }}>
-                    <span style={{ color: 'var(--color-primary-600)' }}>{item.icon}</span>
-                    {item.label}
-                  </div>
-                ))}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                  alt="Team collaborating on AI solutions"
+                  className="hero-side-img"
+                />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80"
+                    alt="Digital technology visualization"
+                    style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-md)' }}
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=400&q=80"
+                    alt="Data analytics dashboard"
+                    style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-md)' }}
+                  />
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -196,26 +220,29 @@ const Home: React.FC = () => {
             {services.map((service, idx) => (
               <AnimatedSection key={service.slug} delay={idx * 75}>
                 <Link to={`/services/${service.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-                  <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
-                    <div style={{
-                      width: '48px', height: '48px', borderRadius: '12px',
-                      background: 'var(--color-primary-50)',
-                      border: '1px solid var(--color-primary-100)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: 'var(--color-primary-600)', marginBottom: '1.25rem',
-                    }}>
-                      {iconMap[service.icon]}
-                    </div>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
-                      {service.title}
-                    </h3>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                      {service.desc}
-                    </p>
-                    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                      {service.techs.map((tech) => (
-                        <span key={tech} className="badge" style={{ fontSize: '0.6875rem' }}>{tech}</span>
-                      ))}
+                  <div className="card" style={{ height: '100%', cursor: 'pointer', padding: 0, overflow: 'hidden' }}>
+                    <img src={service.img} alt={service.title} className="card-img" style={{ borderRadius: '0', marginBottom: 0 }} />
+                    <div style={{ padding: '1.25rem' }}>
+                      <div style={{
+                        width: '48px', height: '48px', borderRadius: '12px',
+                        background: 'var(--color-primary-50)',
+                        border: '1px solid var(--color-primary-100)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: 'var(--color-primary-600)', marginBottom: '1.25rem',
+                      }}>
+                        {iconMap[service.icon]}
+                      </div>
+                      <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
+                        {service.title}
+                      </h3>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                        {service.desc}
+                      </p>
+                      <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
+                        {service.techs.map((tech) => (
+                          <span key={tech} className="badge" style={{ fontSize: '0.6875rem' }}>{tech}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -331,20 +358,25 @@ const Home: React.FC = () => {
                 title: 'Model Context Protocol (MCP)',
                 desc: 'Standardized protocol for connecting AI models to tools, data sources, and APIs. We implement MCP servers and clients for seamless AI system integration.',
                 features: ['Tool integration', 'Data source connectivity', 'Standardized interfaces', 'Cross-platform compatibility'],
+                img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
               },
               {
                 title: 'Agent-to-Agent (A2A)',
                 desc: 'Inter-agent communication protocol enabling AI agents to discover, negotiate, and collaborate. We build A2A-compliant agent networks for complex workflows.',
                 features: ['Agent discovery', 'Task delegation', 'Collaborative solving', 'Agent cards & skills'],
+                img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
               },
               {
                 title: 'RAG Architecture',
                 desc: 'Enterprise Retrieval-Augmented Generation systems that ground AI responses in your organizational knowledge with high accuracy and security.',
                 features: ['Semantic search', 'Hybrid retrieval', 'Document processing', 'Access controls'],
+                img: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80',
               },
             ].map((item, idx) => (
               <AnimatedSection key={item.title} delay={idx * 100}>
-                <div className="card" style={{ height: '100%' }}>
+                <div className="card" style={{ height: '100%', padding: 0, overflow: 'hidden' }}>
+                  <img src={item.img} alt={item.title} className="card-img" style={{ borderRadius: 0, marginBottom: 0 }} />
+                  <div style={{ padding: '1.75rem' }}>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
                     {item.title}
                   </h3>
@@ -357,6 +389,7 @@ const Home: React.FC = () => {
                         <CheckCircle size={14} style={{ color: 'var(--color-success-500)' }} /> {f}
                       </div>
                     ))}
+                  </div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -372,17 +405,23 @@ const Home: React.FC = () => {
         <div className="container">
           <AnimatedSection>
             <div style={{
-              textAlign: 'center',
-              maxWidth: '700px',
+              maxWidth: '900px',
               margin: '0 auto',
-              padding: '4rem 2rem',
-              background: 'var(--color-surface)',
               borderRadius: 'var(--radius-2xl)',
               border: '1px solid var(--color-border)',
               position: 'relative',
               overflow: 'hidden',
             }}>
-              <div style={{ position: 'relative' }}>
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
+                alt="Team collaborating in modern office"
+                style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+              />
+              <div style={{
+                textAlign: 'center',
+                padding: '3rem 2rem',
+                background: 'var(--color-surface)',
+              }}>
                 <h2 style={{ marginBottom: '1rem' }}>
                   Ready to Transform Your Business with <span className="gradient-text">AI</span>?
                 </h2>
