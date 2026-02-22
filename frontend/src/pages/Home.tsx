@@ -88,8 +88,8 @@ const Home: React.FC = () => {
 
               <AnimatedSection delay={100}>
                 <div style={{
-                  fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
-                  fontWeight: 600,
+                  fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  fontWeight: 700,
                   letterSpacing: '0.2em',
                   color: 'var(--color-primary-600)',
                   marginBottom: '1rem',
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
                 }}>
                   WE MAKE IT HAPPEN
                 </div>
-                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2 }}>
+                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1rem, 2vw, 1.5rem)', fontWeight: 700, lineHeight: 1.2 }}>
                   Pioneering{' '}
                   <span className="gradient-text">AI Innovation</span>
                   {' '}for Enterprise Transformation
@@ -165,6 +165,20 @@ const Home: React.FC = () => {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* Banner Image */}
+      <section style={{ background: 'var(--color-bg-primary)', padding: '2rem 0 0' }}>
+        <div className="container">
+          <AnimatedSection>
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
+              alt="Team collaborating on innovative solutions"
+              className="section-banner-img"
+              style={{ height: '300px' }}
+            />
+          </AnimatedSection>
         </div>
       </section>
 
