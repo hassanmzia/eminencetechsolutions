@@ -5,7 +5,7 @@ import {
   Brain, Sparkles, Network, TrendingUp, GitBranch, Cloud,
   Shield, Scale, Database, GraduationCap, ArrowRight, Star,
   CheckCircle, Zap, Users, Building2, Award,
-  Globe, Cpu, Lock, BarChart3
+  Globe, Cpu, Lock, BarChart3, Wifi
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -19,6 +19,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Scale: <Scale size={28} />,
   Database: <Database size={28} />,
   GraduationCap: <GraduationCap size={28} />,
+  Wifi: <Wifi size={28} />,
 };
 
 const metricIcons: Record<string, React.ReactNode> = {
@@ -39,6 +40,8 @@ const services = [
   { title: 'Cloud & Kubernetes', slug: 'cloud-kubernetes', icon: 'Cloud', desc: 'Multi-cloud architecture, Kubernetes/OpenShift orchestration across AWS, Azure, GCP.', techs: ['K8s', 'OpenShift', 'Docker'], img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80' },
   { title: 'Cybersecurity & ATO', slug: 'cybersecurity-compliance', icon: 'Shield', desc: 'Comprehensive security services including ATO support and compliance frameworks.', techs: ['FedRAMP', 'NIST', 'SOC 2'], img: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80' },
   { title: 'AI Governance', slug: 'ai-governance-ethics', icon: 'Scale', desc: 'Ethical AI frameworks, regulatory compliance, guardrails, and governance structures.', techs: ['EU AI Act', 'NIST RMF', 'Ethics'], img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80' },
+  { title: 'Data Engineering & Data Science', slug: 'data-engineering-data-science', icon: 'Database', desc: 'Scalable data pipelines, data lakes, advanced analytics, and machine learning to turn raw data into actionable insights.', techs: ['Spark', 'Snowflake', 'Python', 'dbt'], img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
+  { title: 'IoT Device Integration', slug: 'iot-device-integration', icon: 'Wifi', desc: 'End-to-end IoT solutions connecting devices, sensors, and edge computing to enterprise AI and cloud platforms.', techs: ['MQTT', 'Edge AI', 'AWS IoT', 'Azure IoT'], img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80' },
 ];
 
 const metrics = [

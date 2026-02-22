@@ -16,6 +16,8 @@ const navLinks = [
       { path: '/services/devsecops-mlops', label: 'DevSecOps & MLOps' },
       { path: '/services/cloud-kubernetes', label: 'Cloud & Kubernetes' },
       { path: '/services/cybersecurity-compliance', label: 'Cybersecurity' },
+      { path: '/services/data-engineering-data-science', label: 'Data Engineering & Data Science' },
+      { path: '/services/iot-device-integration', label: 'IoT Device Integration' },
     ],
   },
   { path: '/case-studies', label: 'Case Studies' },
