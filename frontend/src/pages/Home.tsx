@@ -88,7 +88,7 @@ const Home: React.FC = () => {
 
               <AnimatedSection delay={100}>
                 <div style={{
-                  fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  fontSize: 'clamp(1rem, 2vw, 1.75rem)',
                   fontWeight: 700,
                   letterSpacing: '0.2em',
                   color: 'var(--color-primary-600)',
