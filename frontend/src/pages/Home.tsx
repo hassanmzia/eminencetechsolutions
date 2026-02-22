@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import {
@@ -68,21 +68,46 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
   );
 };
 
+const bannerImages = [
+  { src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&h=400&q=80', alt: 'Corporate AI migration - modern enterprise building' },
+  { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&h=400&q=80', alt: 'Corporate AI strategy team' },
+  { src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&h=400&q=80', alt: 'AI robot visionary' },
+];
+
 const Home: React.FC = () => {
+  const [bannerIndex, setBannerIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBannerIndex((prev) => (prev + 1) % bannerImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
-      {/* Banner Image */}
+      {/* Banner Image - cycles through 3 images */}
       <section style={{ background: 'var(--color-bg-secondary)', paddingTop: '5rem' }}>
         <div className="container">
-          {/* Saved images:
-            - Corporate AI Strategy Team: https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&h=400&q=80
-          */}
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&h=400&q=80"
-            alt="Corporate AI migration - modern enterprise building"
-            className="section-banner-img"
-            style={{ height: '220px', marginBottom: 0 }}
-          />
+          <div style={{ position: 'relative', height: '220px', overflow: 'hidden', borderRadius: 'var(--radius-2xl)' }}>
+            {bannerImages.map((img, i) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                className="section-banner-img"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '220px',
+                  marginBottom: 0,
+                  opacity: i === bannerIndex ? 1 : 0,
+                  transition: 'opacity 1s ease-in-out',
+                }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -105,7 +130,7 @@ const Home: React.FC = () => {
 
               <AnimatedSection delay={100}>
                 <div style={{
-                  fontSize: 'clamp(1rem, 2vw, 1.75rem)',
+                  fontSize: 'clamp(0.85rem, 1.6vw, 1.4rem)',
                   fontWeight: 700,
                   letterSpacing: '0.2em',
                   color: 'var(--color-primary-600)',
@@ -114,7 +139,7 @@ const Home: React.FC = () => {
                 }}>
                   WE MAKE IT HAPPEN
                 </div>
-                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1rem, 2vw, 1.5rem)', fontWeight: 700, lineHeight: 1.2 }}>
+                <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(0.9rem, 1.6vw, 1.25rem)', fontWeight: 700, lineHeight: 1.2 }}>
                   Pioneering{' '}
                   <span className="gradient-text">AI Innovation</span>
                   {' '}for Enterprise Transformation
