@@ -156,6 +156,10 @@ ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'info@eminencetechsolutions.com')
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
+# FairHire Integration
+FAIRHIRE_API_URL = os.environ.get('FAIRHIRE_API_URL', 'https://demo.eminencetechsolutions.com:3047/api')
+FAIRHIRE_API_TOKEN = os.environ.get('FAIRHIRE_API_TOKEN', '')
+
 # Security settings
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True

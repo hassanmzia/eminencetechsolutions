@@ -8,4 +8,5 @@ router.register(r'applications', views.JobApplicationViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('openings/', views.fairhire_openings, name='fairhire-openings'),
 ]

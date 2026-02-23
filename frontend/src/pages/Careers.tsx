@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Briefcase, MapPin, Clock, DollarSign, CheckCircle,
-  ChevronDown, ChevronUp, ArrowRight, Users, Heart, GraduationCap, Globe, ExternalLink,
+  ChevronDown, ChevronUp, Users, Heart, GraduationCap, Globe, ExternalLink, Loader2,
 } from 'lucide-react';
 
-const FAIRHIRE_URL = 'https://demo.eminencetechsolutions.com:3047/login';
+const FAIRHIRE_URL = 'https://demo.eminencetechsolutions.com:3047/register';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -16,38 +16,106 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
   );
 };
 
-const jobs = [
+// Fallback jobs shown when FairHire is unavailable
+const fallbackJobs = [
   {
-    title: 'Senior Agentic AI Engineer', slug: 'senior-agentic-ai-engineer', department: 'AI Engineering',
-    type: 'Full Time', level: 'Senior', location: 'Sterling, VA / Remote', locationType: 'Hybrid',
+    id: 'fallback-1', title: 'Senior Agentic AI Engineer', department: 'AI Engineering',
+    type: 'Full Time', experience_level: 'Senior', location: 'Sterling, VA / Remote', is_remote: false,
     salary: '$160,000 - $220,000',
     description: 'Join our AI Engineering team to design and build production-grade agentic AI systems for enterprise clients.',
-    requirements: ['5+ years software engineering', '3+ years AI/ML systems', 'LLM frameworks experience', 'Strong Python skills', 'Production AI deployment'],
+    requirements: '5+ years software engineering\n3+ years AI/ML systems\nLLM frameworks experience\nStrong Python skills\nProduction AI deployment',
     skills: ['Python', 'LangChain', 'LLM', 'RAG', 'Kubernetes', 'AWS/Azure/GCP'],
-    benefits: ['Health/Dental/Vision', '401k matching', 'Remote flexibility', 'Conference budget', 'Learning stipend'],
   },
   {
-    title: 'DevSecOps Engineer', slug: 'devsecops-engineer', department: 'Cloud & Infrastructure',
-    type: 'Full Time', level: 'Mid Level', location: 'Sterling, VA / Remote', locationType: 'Remote',
+    id: 'fallback-2', title: 'DevSecOps Engineer', department: 'Cloud & Infrastructure',
+    type: 'Full Time', experience_level: 'Mid Level', location: 'Sterling, VA / Remote', is_remote: true,
     salary: '$130,000 - $170,000',
     description: 'Build and maintain secure CI/CD pipelines for AI/ML workloads across multi-cloud environments.',
-    requirements: ['3+ years DevOps experience', 'Kubernetes expertise', 'CI/CD tools experience', 'Security frameworks knowledge', 'Cloud platform experience'],
+    requirements: '3+ years DevOps experience\nKubernetes expertise\nCI/CD tools experience\nSecurity frameworks knowledge\nCloud platform experience',
     skills: ['Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'AWS', 'Security'],
-    benefits: ['Health/Dental/Vision', '401k matching', 'Remote work', 'Professional development'],
   },
   {
-    title: 'AI Solutions Architect', slug: 'ai-solutions-architect', department: 'Consulting',
-    type: 'Full Time', level: 'Lead/Principal', location: 'Sterling, VA / Remote', locationType: 'Hybrid',
+    id: 'fallback-3', title: 'AI Solutions Architect', department: 'Consulting',
+    type: 'Full Time', experience_level: 'Lead/Principal', location: 'Sterling, VA / Remote', is_remote: false,
     salary: '$180,000 - $250,000',
     description: 'Lead the technical design of AI solutions for enterprise clients. Bridge business requirements and technical implementation.',
-    requirements: ['8+ years software architecture', '5+ years AI/ML', 'Enterprise architecture experience', 'Strong communication', 'Cloud certifications preferred'],
+    requirements: '8+ years software architecture\n5+ years AI/ML\nEnterprise architecture experience\nStrong communication\nCloud certifications preferred',
     skills: ['Solution Architecture', 'AI/ML', 'Cloud', 'Enterprise Architecture', 'Communication'],
-    benefits: ['Health/Dental/Vision', '401k matching', 'Equity options', 'Executive benefits'],
   },
 ];
 
+interface Job {
+  id: number | string;
+  title: string;
+  department: string | { name: string };
+  description: string;
+  requirements: string;
+  experience_level: string;
+  location: string;
+  is_remote: boolean;
+  salary_min?: number | null;
+  salary_max?: number | null;
+  salary?: string;
+  type?: string;
+  skills?: string[];
+  nice_to_have?: string;
+}
+
+function formatSalary(job: Job): string {
+  if (job.salary) return job.salary;
+  if (job.salary_min && job.salary_max) {
+    return `$${Number(job.salary_min).toLocaleString()} - $${Number(job.salary_max).toLocaleString()}`;
+  }
+  return 'Competitive';
+}
+
+function getDepartment(job: Job): string {
+  if (typeof job.department === 'string') return job.department;
+  return job.department?.name || '';
+}
+
+function getRequirementsList(job: Job): string[] {
+  if (!job.requirements) return [];
+  return job.requirements.split('\n').map(r => r.replace(/^[-•*]\s*/, '').trim()).filter(Boolean);
+}
+
+function getLocationType(job: Job): string {
+  if (job.is_remote) return 'Remote';
+  if (job.location?.toLowerCase().includes('remote')) return 'Hybrid';
+  return 'On-site';
+}
+
+const experienceLabelMap: Record<string, string> = {
+  entry: 'Entry Level', mid: 'Mid Level', senior: 'Senior',
+  lead: 'Lead', principal: 'Principal', 'Lead/Principal': 'Lead/Principal',
+  'Mid Level': 'Mid Level',
+};
+
 const Careers: React.FC = () => {
   const [expandedJob, setExpandedJob] = useState<string | null>(null);
+  const [jobs, setJobs] = useState<Job[]>(fallbackJobs);
+  const [loading, setLoading] = useState(true);
+  const [source, setSource] = useState<'fairhire' | 'fallback'>('fallback');
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const resp = await fetch('/api/careers/openings/');
+        if (!resp.ok) throw new Error('API error');
+        const data = await resp.json();
+        if (!cancelled && data.results && data.results.length > 0) {
+          setJobs(data.results);
+          setSource('fairhire');
+        }
+      } catch {
+        // keep fallback jobs
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <div style={{ paddingTop: '6rem' }}>
@@ -116,53 +184,84 @@ const Careers: React.FC = () => {
             <div className="section-header">
               <span className="section-label"><Briefcase size={14} /> Open Positions</span>
               <h2 className="section-title">Current <span className="gradient-text">Opportunities</span></h2>
+              {source === 'fairhire' && (
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', marginTop: '0.5rem' }}>
+                  Powered by <strong>FairHire AI</strong> — our AI-driven hiring platform
+                </p>
+              )}
             </div>
           </AnimatedSection>
 
-          <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {jobs.map((job, idx) => (
-              <AnimatedSection key={job.slug} delay={idx * 100}>
-                <div className="card" style={{ cursor: 'pointer' }}>
-                  <div onClick={() => setExpandedJob(expandedJob === job.slug ? null : job.slug)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
-                    <div>
-                      <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{job.title}</h3>
-                      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Briefcase size={13} /> {job.department}</span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><MapPin size={13} /> {job.locationType}</span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Clock size={13} /> {job.type}</span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><DollarSign size={13} /> {job.salary}</span>
-                      </div>
-                    </div>
-                    {expandedJob === job.slug ? <ChevronUp size={20} color="var(--color-text-muted)" /> : <ChevronDown size={20} color="var(--color-text-muted)" />}
-                  </div>
-
-                  {expandedJob === job.slug && (
-                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
-                      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.25rem' }}>{job.description}</p>
-
-                      <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Requirements</h4>
-                      <ul style={{ listStyle: 'none', marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                        {job.requirements.map(r => (
-                          <li key={r} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-                            <CheckCircle size={14} style={{ color: 'var(--color-success-500)' }} /> {r}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Skills</h4>
-                      <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-                        {job.skills.map(s => <span key={s} className="badge">{s}</span>)}
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '3rem' }}>
+              <Loader2 size={32} style={{ animation: 'spin 1s linear infinite', color: 'var(--color-primary-600)' }} />
+              <p style={{ color: 'var(--color-text-muted)', marginTop: '1rem' }}>Loading open positions...</p>
+            </div>
+          ) : (
+            <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {jobs.map((job, idx) => {
+                const jobId = String(job.id);
+                const reqs = getRequirementsList(job);
+                return (
+                  <AnimatedSection key={jobId} delay={idx * 100}>
+                    <div className="card" style={{ cursor: 'pointer' }}>
+                      <div onClick={() => setExpandedJob(expandedJob === jobId ? null : jobId)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                        <div>
+                          <h3 style={{ color: 'var(--color-text-primary)', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{job.title}</h3>
+                          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Briefcase size={13} /> {getDepartment(job)}</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><MapPin size={13} /> {getLocationType(job)}</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><Clock size={13} /> {experienceLabelMap[job.experience_level] || job.experience_level}</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><DollarSign size={13} /> {formatSalary(job)}</span>
+                          </div>
+                        </div>
+                        {expandedJob === jobId ? <ChevronUp size={20} color="var(--color-text-muted)" /> : <ChevronDown size={20} color="var(--color-text-muted)" />}
                       </div>
 
-                      <a href={FAIRHIRE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                        Apply Now <ExternalLink size={16} />
-                      </a>
+                      {expandedJob === jobId && (
+                        <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
+                          <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.25rem', whiteSpace: 'pre-line' }}>{job.description}</p>
+
+                          {reqs.length > 0 && (
+                            <>
+                              <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Requirements</h4>
+                              <ul style={{ listStyle: 'none', marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
+                                {reqs.map(r => (
+                                  <li key={r} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+                                    <CheckCircle size={14} style={{ color: 'var(--color-success-500)', flexShrink: 0 }} /> {r}
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+
+                          {job.nice_to_have && (
+                            <>
+                              <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Nice to Have</h4>
+                              <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.875rem', marginBottom: '1.25rem', whiteSpace: 'pre-line' }}>{job.nice_to_have}</p>
+                            </>
+                          )}
+
+                          {job.skills && job.skills.length > 0 && (
+                            <>
+                              <h4 style={{ color: 'var(--color-text-primary)', fontSize: '0.9375rem', marginBottom: '0.75rem' }}>Skills</h4>
+                              <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                                {job.skills.map(s => <span key={s} className="badge">{s}</span>)}
+                              </div>
+                            </>
+                          )}
+
+                          <a href={FAIRHIRE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                            Apply Now <ExternalLink size={16} />
+                          </a>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </div>
