@@ -13,8 +13,8 @@ const ChatWidget: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Welcome to Eminence Tech Solutions! I'm your AI assistant powered by our multi-agent system. I can help you with:\n\n- **Service information** about our AI, Cloud, and DevSecOps capabilities\n- **Technical questions** about our technology stack\n- **Business inquiries** about consulting engagements\n- **AI market insights** and technology trends\n\nHow can I assist you today?",
-      agent: 'Support Agent',
+      content: "Hi! Welcome to **Eminence Tech Solutions**. I'm your AI assistant — ask me anything about our services, team, contact info, or how we can help with your project. What can I do for you?",
+      agent: 'ETS Assistant',
     },
   ]);
   const [input, setInput] = useState('');
@@ -130,7 +130,7 @@ const ChatWidget: React.FC = () => {
           </div>
           <div>
             <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'white' }}>AI Assistant</div>
-            <div style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.6)' }}>Multi-Agent System</div>
+            <div style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.6)' }}>Ask me anything</div>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '0.5rem' }}>

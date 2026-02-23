@@ -42,7 +42,7 @@ const posts = [
     title: 'Kubernetes Security Best Practices for AI Workloads',
     slug: 'kubernetes-security-ai-workloads', excerpt: 'Securing AI workloads on Kubernetes requires specialized approaches. Here is our comprehensive security guide.',
     category: 'DevSecOps', tags: ['Kubernetes', 'Security', 'AI', 'DevSecOps'], author: 'David Kim', date: 'Dec 2025',
-    img: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
   },
   {
     title: 'The Business Case for AI Transformation: ROI Framework',

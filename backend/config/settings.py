@@ -152,6 +152,10 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1',
 DEFAULT_FROM_EMAIL = 'Eminence Tech Solutions <info@eminencetechsolutions.com>'
 ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'info@eminencetechsolutions.com')
 
+# AI Engine
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+
 # Security settings
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
