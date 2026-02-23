@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
-  Briefcase, MapPin, Clock, DollarSign, Upload, CheckCircle,
-  ChevronDown, ChevronUp, ArrowRight, Users, Heart, GraduationCap, Globe,
+  Briefcase, MapPin, Clock, DollarSign, CheckCircle,
+  ChevronDown, ChevronUp, ArrowRight, Users, Heart, GraduationCap, Globe, ExternalLink,
 } from 'lucide-react';
+
+const FAIRHIRE_URL = 'https://demo.eminencetechsolutions.com:3047/login';
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -46,13 +48,6 @@ const jobs = [
 
 const Careers: React.FC = () => {
   const [expandedJob, setExpandedJob] = useState<string | null>(null);
-  const [showApply, setShowApply] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleApply = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   return (
     <div style={{ paddingTop: '6rem' }}>
@@ -159,55 +154,9 @@ const Careers: React.FC = () => {
                         {job.skills.map(s => <span key={s} className="badge">{s}</span>)}
                       </div>
 
-                      {showApply === job.slug ? (
-                        submitted ? (
-                          <div style={{ textAlign: 'center', padding: '2rem' }}>
-                            <CheckCircle size={48} style={{ color: 'var(--color-success-500)', marginBottom: '1rem' }} />
-                            <h3 style={{ color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>Application Submitted!</h3>
-                            <p style={{ color: 'var(--color-text-muted)' }}>We will review your application and get back to you.</p>
-                          </div>
-                        ) : (
-                          <form onSubmit={handleApply} className="form-grid">
-                            <div className="form-group">
-                              <label className="form-label">First Name *</label>
-                              <input className="form-input" required placeholder="John" />
-                            </div>
-                            <div className="form-group">
-                              <label className="form-label">Last Name *</label>
-                              <input className="form-input" required placeholder="Doe" />
-                            </div>
-                            <div className="form-group">
-                              <label className="form-label">Email *</label>
-                              <input type="email" className="form-input" required placeholder="john@example.com" />
-                            </div>
-                            <div className="form-group">
-                              <label className="form-label">Phone *</label>
-                              <input className="form-input" required placeholder="(555) 123-4567" />
-                            </div>
-                            <div className="form-group form-span-full">
-                              <label className="form-label">LinkedIn URL</label>
-                              <input className="form-input" placeholder="https://linkedin.com/in/..." />
-                            </div>
-                            <div className="form-group form-span-full">
-                              <label className="form-label">Resume * (PDF or Word, max 10MB)</label>
-                              <input type="file" accept=".pdf,.doc,.docx" required className="form-input" style={{ padding: '0.5rem' }} />
-                            </div>
-                            <div className="form-group form-span-full">
-                              <label className="form-label">Cover Letter</label>
-                              <textarea className="form-textarea" rows={4} placeholder="Tell us why you'd be a great fit..." />
-                            </div>
-                            <div className="form-span-full">
-                              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                                Submit Application <ArrowRight size={16} />
-                              </button>
-                            </div>
-                          </form>
-                        )
-                      ) : (
-                        <button onClick={() => setShowApply(job.slug)} className="btn btn-primary">
-                          Apply Now <ArrowRight size={16} />
-                        </button>
-                      )}
+                      <a href={FAIRHIRE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                        Apply Now <ExternalLink size={16} />
+                      </a>
                     </div>
                   )}
                 </div>
