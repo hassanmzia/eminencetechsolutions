@@ -116,6 +116,26 @@ class Command(BaseCommand):
                 "order": 9,
             },
             {
+                "title": "Data Engineering & Data Science",
+                "slug": "data-engineering-data-science",
+                "short_description": "End-to-end data science solutions including ML model development, statistical analysis, predictive modeling, and advanced analytics to drive data-informed business decisions.",
+                "full_description": "Our Data Engineering & Data Science practice combines robust data infrastructure with advanced analytical capabilities. We build machine learning models, develop predictive analytics, perform statistical analysis, and create data-driven solutions that transform how organizations make decisions. From feature engineering and model training to deployment and monitoring, we deliver the full data science lifecycle with enterprise-grade reliability and scale.",
+                "icon": "FlaskConical",
+                "features": ["Machine learning model development", "Predictive analytics", "Statistical analysis", "Feature engineering", "Model training and evaluation", "Data visualization and storytelling"],
+                "technologies": ["Python", "PyTorch", "TensorFlow", "scikit-learn", "Pandas", "Jupyter", "MLflow"],
+                "order": 10,
+            },
+            {
+                "title": "IoT Device Integration",
+                "slug": "iot-device-integration",
+                "short_description": "Design, develop, and deploy Internet of Things solutions with device connectivity, edge computing, sensor data processing, and real-time monitoring dashboards.",
+                "full_description": "Our IoT Device Integration practice delivers end-to-end Internet of Things solutions for enterprises. We design and implement device connectivity architectures, edge computing pipelines, sensor data ingestion and processing systems, and real-time monitoring dashboards. Whether you need predictive maintenance for industrial equipment, smart building automation, or fleet tracking, we integrate IoT data with AI and cloud platforms to unlock actionable insights from your connected devices.",
+                "icon": "Wifi",
+                "features": ["IoT device connectivity", "Edge computing", "Sensor data processing", "Real-time monitoring dashboards", "Predictive maintenance", "IoT platform integration"],
+                "technologies": ["AWS IoT", "Azure IoT Hub", "MQTT", "Apache Kafka", "InfluxDB", "Grafana", "Edge AI"],
+                "order": 11,
+            },
+            {
                 "title": "Training & Education",
                 "slug": "training-education",
                 "short_description": "Professional training programs in AI/ML, Cloud Engineering, DevSecOps, Kubernetes, and emerging technologies for teams and individuals.",
@@ -123,7 +143,7 @@ class Command(BaseCommand):
                 "icon": "GraduationCap",
                 "features": ["Customized training programs", "Hands-on lab environments", "Certification preparation", "Team skill assessments", "Ongoing learning paths", "Executive AI literacy"],
                 "technologies": ["AI/ML", "Cloud Platforms", "Kubernetes", "DevSecOps", "Data Science", "Cybersecurity"],
-                "order": 10,
+                "order": 12,
             },
         ]
         for s in services:

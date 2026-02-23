@@ -68,6 +68,16 @@ COMPANY_KNOWLEDGE = {
             "description": "Establishing ethical AI frameworks, regulatory compliance, responsible AI practices, and governance structures.",
             "capabilities": ["Ethical AI frameworks", "Regulatory compliance", "Bias detection", "Transparency reporting", "AI guardrails"],
         },
+        {
+            "name": "Data Engineering & Data Science",
+            "description": "End-to-end data solutions including data pipeline architecture, data lakes, real-time analytics, machine learning model development, and business intelligence to power AI and data-driven decision making.",
+            "capabilities": ["Data pipeline architecture", "Data lake implementation", "Machine learning model development", "Real-time analytics", "Business intelligence", "Data governance"],
+        },
+        {
+            "name": "IoT Device Integration",
+            "description": "Design, develop, and deploy Internet of Things solutions including device connectivity, edge computing, sensor data processing, IoT platform integration, and real-time monitoring dashboards.",
+            "capabilities": ["IoT device connectivity", "Edge computing", "Sensor data processing", "IoT platform integration", "Real-time monitoring", "Predictive maintenance"],
+        },
     ],
 }
 
@@ -120,7 +130,8 @@ class RouterAgent(BaseAgent):
         "sales": ["pricing", "cost", "quote", "proposal", "budget", "engagement", "hire", "contract", "partner"],
         "technical": ["kubernetes", "docker", "openshift", "ai", "ml", "devops", "devsecops", "cloud",
                       "architecture", "agentic", "rag", "llm", "mcp", "agent", "autonomous", "deploy",
-                      "microservice", "api", "data", "security", "compliance"],
+                      "microservice", "api", "data", "security", "compliance", "iot", "sensor",
+                      "edge", "pipeline", "analytics", "data science", "data engineering"],
         "support": ["help", "issue", "problem", "support", "question", "faq", "hours", "contact", "location"],
         "research": ["research", "market", "analysis", "trend", "innovation", "future", "comparison", "benchmark",
                       "adoption", "strategy", "roadmap", "transformation"],
