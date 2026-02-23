@@ -22,6 +22,14 @@ class ContactMessageViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
         # Send email notification to admin
         try:
+            logger.info(
+                'Sending contact email: from=%s, to=%s, host=%s, port=%s, user=%s',
+                settings.DEFAULT_FROM_EMAIL,
+                settings.ADMIN_EMAIL,
+                settings.EMAIL_HOST,
+                settings.EMAIL_PORT,
+                settings.EMAIL_HOST_USER or '(empty)',
+            )
             send_mail(
                 subject=f'[ETS Contact] {msg.subject}',
                 message=(
@@ -36,8 +44,9 @@ class ContactMessageViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.ADMIN_EMAIL],
-                fail_silently=True,
+                fail_silently=False,
             )
+            logger.info('Contact email sent successfully to %s', settings.ADMIN_EMAIL)
         except Exception:
             logger.exception('Failed to send contact notification email')
 

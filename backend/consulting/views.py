@@ -23,6 +23,14 @@ class ConsultingInquiryViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet)
 
         # Send email notification to admin
         try:
+            logger.info(
+                'Sending consulting inquiry email: from=%s, to=%s, host=%s, port=%s, user=%s',
+                settings.DEFAULT_FROM_EMAIL,
+                settings.ADMIN_EMAIL,
+                settings.EMAIL_HOST,
+                settings.EMAIL_PORT,
+                settings.EMAIL_HOST_USER or '(empty)',
+            )
             send_mail(
                 subject=f'[ETS Consulting] New inquiry from {inquiry.company_name}',
                 message=(
@@ -44,8 +52,9 @@ class ConsultingInquiryViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet)
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.ADMIN_EMAIL],
-                fail_silently=True,
+                fail_silently=False,
             )
+            logger.info('Consulting inquiry email sent successfully to %s', settings.ADMIN_EMAIL)
         except Exception:
             logger.exception('Failed to send consulting inquiry notification email')
 
