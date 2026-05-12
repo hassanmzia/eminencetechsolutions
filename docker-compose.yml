@@ -137,8 +137,8 @@ services:
       dockerfile: Dockerfile
     container_name: eminence-frontend
     restart: unless-stopped
-    ports:
-      - "23001:3000"  # Using 23001 externally to avoid conflicts
+    expose:
+      - "3000"
     networks:
       - eminence-network
 
@@ -152,7 +152,10 @@ services:
     container_name: eminence-nginx
     restart: unless-stopped
     ports:
-      - "3021:80"  # Using 3021 externally since port 80 is occupied
+      - "80:80"    # HTTP (redirects to HTTPS)
+      - "443:443"  # HTTPS (TLS terminated here)
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs:ro
     depends_on:
       - backend
       - frontend

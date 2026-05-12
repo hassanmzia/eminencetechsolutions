@@ -48,3 +48,8 @@ htmlcov/
 .coverage
 .coverage.*
 coverage.xml
+
+# TLS certificates (mounted into nginx)
+nginx/certs/*
+!nginx/certs/.gitkeep
+!nginx/certs/README.md
