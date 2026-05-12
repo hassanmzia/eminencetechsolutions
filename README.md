@@ -104,7 +104,7 @@ open http://localhost
 
 | Service    | Internal Port | External Port |
 |------------|--------------|---------------|
-| Nginx      | 80, 443      | 80, 443 (TLS) |
+| Nginx      | 443          | 443 (TLS)     |
 | Frontend   | 3000         | (internal)    |
 | Backend    | 8000         | (internal)    |
 | PostgreSQL | 5432         | 25433         |
@@ -112,8 +112,8 @@ open http://localhost
 
 TLS is terminated on the nginx service. Drop your ZeroSSL `fullchain.pem` and
 `privkey.pem` into `./nginx/certs/` before bringing the stack up — see
-`nginx/certs/README.md` for instructions. HTTP requests on port 80 are
-redirected to HTTPS.
+`nginx/certs/README.md` for instructions. Only HTTPS on port 443 is exposed;
+port 80 is not bound on the host.
 
 ### Django Admin
 
