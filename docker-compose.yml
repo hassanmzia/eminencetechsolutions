@@ -138,7 +138,7 @@ services:
     container_name: eminence-frontend
     restart: unless-stopped
     ports:
-      - "23001:3000"  # Using 23001 externally to avoid conflicts
+      - "443:3000"  # Exposing site on port 443
     networks:
       - eminence-network
 

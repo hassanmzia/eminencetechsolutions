@@ -105,7 +105,7 @@ open http://localhost
 | Service    | Internal Port | External Port |
 |------------|--------------|---------------|
 | Nginx      | 80           | 80            |
-| Frontend   | 3000         | 3001          |
+| Frontend   | 3000         | 443           |
 | Backend    | 8000         | (internal)    |
 | PostgreSQL | 5432         | 5433          |
 | Redis      | 6379         | 6380          |
