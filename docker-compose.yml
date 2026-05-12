@@ -152,7 +152,6 @@ services:
     container_name: eminence-nginx
     restart: unless-stopped
     ports:
-      - "80:80"    # HTTP (redirects to HTTPS)
       - "443:443"  # HTTPS (TLS terminated here)
     volumes:
       - ./nginx/certs:/etc/nginx/certs:ro
